@@ -1,5 +1,4 @@
 import { useState } from "react";
-import DiscoverMockup from "@/components/DiscoverMockup";
 
 const BASE = import.meta.env.BASE_URL;
 
@@ -15,23 +14,6 @@ function PhoneMockup({
   return (
     <div className={`phone-frame w-[200px] h-[430px] md:w-[230px] md:h-[490px] flex-shrink-0 ${className}`}>
       <img src={src} alt={alt} />
-    </div>
-  );
-}
-
-function PhoneMockupLive({
-  children,
-  className = "",
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) {
-  return (
-    <div className={`phone-frame w-[200px] h-[430px] md:w-[230px] md:h-[490px] flex-shrink-0 ${className}`}
-      style={{ padding: 0, overflow: "hidden" }}>
-      <div style={{ borderRadius: 34, overflow: "hidden", width: "100%", height: "100%" }}>
-        {children}
-      </div>
     </div>
   );
 }
@@ -157,9 +139,11 @@ export default function Home() {
             <PhoneMockup src={`${BASE}assets/screen-earnings.png`} alt="Earnings Dashboard" />
           </div>
           <div className="float-phone-2 z-10">
-            <PhoneMockupLive className="!w-[220px] !h-[470px] md:!w-[260px] md:!h-[560px]">
-              <DiscoverMockup />
-            </PhoneMockupLive>
+            <PhoneMockup
+              src={`${BASE}assets/screen-discover.png`}
+              alt="Discover Artists"
+              className="!w-[220px] !h-[470px] md:!w-[260px] md:!h-[560px]"
+            />
           </div>
           <div className="float-phone-3 opacity-70 hidden md:block">
             <PhoneMockup src={`${BASE}assets/screen-explore.png`} alt="Explore Page" />
@@ -273,9 +257,11 @@ export default function Home() {
                 </div>
               </div>
               <div className="order-1 md:order-2 float-phone-2">
-                <PhoneMockupLive className="!w-[220px] !h-[470px]">
-                  <DiscoverMockup />
-                </PhoneMockupLive>
+                <PhoneMockup
+                  src={`${BASE}assets/screen-discover.png`}
+                  alt="Discover Artists"
+                  className="!w-[220px] !h-[470px]"
+                />
               </div>
             </div>
 
