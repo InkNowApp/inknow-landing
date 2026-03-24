@@ -110,7 +110,7 @@ export default function Home() {
             <img
               src={`${BASE}assets/logo.png`}
               alt="InkNow"
-              className="h-24 md:h-32 w-auto object-contain mix-blend-screen brightness-200"
+              className="h-36 md:h-52 w-auto object-contain mix-blend-screen brightness-200"
             />
           </div>
 
