@@ -1,0 +1,38 @@
+Create a premium, dark‑mode landing page for the InkNow app using the screenshots I will upload 
+(Explore page, Discover page, Earnings screen, Artist Profile). The landing page should feel modern, 
+bold, and exciting — like a real app launch teaser that builds hype.
+
+Use a black background, white text, smooth spacing, and clean rounded UI elements. Center the InkNow 
+logo at the top. Add a large hero headline:
+
+“InkNow — The New Way Artists and Clients Connect.”
+
+Add a subheadline:
+
+“Clients can’t find the right artist. Artists can’t find serious clients. InkNow fixes both.”
+
+Add a fun, energetic description of the app that explains:
+
+• InkNow helps clients discover artists by style, location, and real portfolios.
+• InkNow helps artists get booked by serious clients who actually show up.
+• Clients get transparency, verified artists, and easy booking.
+• Artists get tools for scheduling, deposits, messaging, and a reliability score.
+• InkNow solves the biggest problem in the tattoo world: discovery and trust.
+
+Below the hero section, create a “Sneak Peek” section that displays the screenshots I upload as 
+premium mobile mockups. Add subtle shadows, rounded corners, and a clean layout that feels like 
+Apple’s product pages. Each screenshot should have a short caption:
+
+• Explore Page — Find artists by style and vibe.
+• Discover Page — Trending artists and curated picks.
+• Artist Profile — Real portfolios, real reviews, real results.
+• Earnings Dashboard — Tools that help artists grow their business.
+
+Add a “Join the Waitlist” button that stands out with a glowing effect. Make the entire page 
+responsive and mobile‑friendly. The vibe should feel premium, artistic, and culture‑driven — 
+something that gets people excited for the app to drop.
+
+
+Have captions under the photos I provide put in your own words that sound good, Discover you can scroll for artist near and far, explore page go off algorithms, the app also have a top 50 artist list in multiple cities that reset every week,  
+
+In the photos remix them into mocks don’t use the same avatars in the phots I use.

@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "InkNow Landing Page"
+version = "1.0.0"
+id = "artifacts/inknow-landing"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 23726
+
+[services.development]
+run = "pnpm --filter @workspace/inknow-landing run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/inknow-landing", "run", "build" ]
+publicDir = "artifacts/inknow-landing/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "23726"
+BASE_PATH = "/"
