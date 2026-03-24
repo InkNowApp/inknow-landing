@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { supabase } from "@/lib/supabase";
 
 const BASE = import.meta.env.BASE_URL;
 
@@ -52,11 +53,26 @@ function StatCard({ value, label }: { value: string; label: string }) {
 export default function Home() {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
   const [role, setRole] = useState<"client" | "artist">("client");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (email.trim()) {
+    if (!email.trim()) return;
+    setLoading(true);
+    setError("");
+    const { error: sbError } = await supabase
+      .from("waitlist")
+      .insert({ email: email.trim(), role });
+    setLoading(false);
+    if (sbError) {
+      if (sbError.code === "23505") {
+        setError("You're already on the list — we'll reach out when it's time.");
+      } else {
+        setError("Something went wrong. Try again or email us at support@getinknow.com");
+      }
+    } else {
       setSubmitted(true);
     }
   };
@@ -461,22 +477,29 @@ export default function Home() {
           </div>
 
           {!submitted ? (
-            <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder={role === "artist" ? "Enter your artist email..." : "Enter your email..."}
-                required
-                className="flex-1 px-5 py-4 rounded-full bg-white/8 border border-white/15 text-white placeholder-white/35 text-sm outline-none focus:border-yellow-500/60 focus:bg-white/10 transition-all duration-200"
-              />
-              <button
-                type="submit"
-                className="glow-button px-6 py-4 rounded-full bg-yellow-500 text-black font-bold text-sm hover:bg-yellow-400 transition-colors duration-200 whitespace-nowrap"
-              >
-                Notify Me
-              </button>
-            </form>
+            <>
+              <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder={role === "artist" ? "Enter your artist email..." : "Enter your email..."}
+                  required
+                  disabled={loading}
+                  className="flex-1 px-5 py-4 rounded-full bg-white/8 border border-white/15 text-white placeholder-white/35 text-sm outline-none focus:border-yellow-500/60 focus:bg-white/10 transition-all duration-200 disabled:opacity-60"
+                />
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="glow-button px-6 py-4 rounded-full bg-yellow-500 text-black font-bold text-sm hover:bg-yellow-400 transition-colors duration-200 whitespace-nowrap disabled:opacity-60"
+                >
+                  {loading ? "Saving..." : "Notify Me"}
+                </button>
+              </form>
+              {error && (
+                <p className="text-white/50 text-sm mt-3">{error}</p>
+              )}
+            </>
           ) : (
             <div className="max-w-md mx-auto px-6 py-5 rounded-2xl bg-yellow-500/10 border border-yellow-500/30 text-yellow-400 font-semibold">
               🎉 You're on the list{role === "artist" ? " as an artist" : ""}! We'll hit you up when InkNow drops.
