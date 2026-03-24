@@ -86,7 +86,7 @@ export default function Home() {
         <img
           src={`${BASE}assets/logo.png`}
           alt="InkNow"
-          className="h-10 w-auto object-contain mix-blend-screen brightness-200"
+          className="h-16 w-auto object-contain mix-blend-screen brightness-200"
         />
         <a
           href="#waitlist"
@@ -518,7 +518,7 @@ export default function Home() {
           <img
             src={`${BASE}assets/logo.png`}
             alt="InkNow"
-            className="h-10 w-auto object-contain mix-blend-screen brightness-200"
+            className="h-20 w-auto object-contain mix-blend-screen brightness-200"
           />
           <p className="text-white/25 text-sm text-center">
             © 2026 InkNow. All rights reserved. Built for the culture.
