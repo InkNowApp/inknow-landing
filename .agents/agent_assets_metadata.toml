@@ -1,0 +1,8 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "G1Jt2K8XFWmDe_ryJSN-j"
+uri = "file://artifacts/inknow-landing/public/favicon.png"
+type = "image"
+title = "InkNow App Icon"
