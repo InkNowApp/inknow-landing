@@ -1,0 +1,92 @@
+CONTENT — SUPPORT PAGE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Company: InkNow
+Contact email: support@getinknow.com  (replace with your real address)
+Tone: Warm but minimal. Helpful, not corporate. 
+Short answers. No walls of text.
+--- PAGE STRUCTURE ---
+INTRO (below H1 and subtitle, before FAQ):
+  "Before reaching out, check the FAQ below — most questions are 
+   answered there. For anything else, email us directly."
+--- FAQ SECTIONS ---
+SECTION 1 — For Clients
+  Q: How do I book an appointment?
+  A: Browse artists on the Explore tab, open an artist's profile, 
+     and tap Book. Fill out the consultation form with your tattoo 
+     details and preferred dates. The artist will review your request 
+     and respond within the app.
+  Q: Why do I have to pay a deposit?
+  A: Deposits secure your appointment slot and compensate the artist 
+     for their time if a cancellation occurs. The deposit amount is 
+     set by each artist and shown before you pay.
+  Q: Can I get a refund on my deposit?
+  A: Refund eligibility depends on the artist's individual cancellation 
+     policy, which is displayed during the booking process. InkNow does 
+     not issue deposit refunds — please reach out to your artist directly 
+     through in-app chat.
+  Q: How do I cancel or reschedule?
+  A: Open the appointment in your Bookings tab and tap the menu icon. 
+     You can request a reschedule or cancel from there. Late cancellations 
+     may incur a fee per the artist's policy.
+  Q: My artist cancelled on me. What do I do?
+  A: If an artist cancels, contact us at support@getinknow.com and we 
+     will review the situation and assist with any deposit questions.
+  Q: How do I pay the remaining balance after my appointment?
+  A: You'll receive an in-app notification when your artist marks the 
+     session complete. Open the appointment and tap Pay Balance to 
+     complete your payment securely through the app.
+SECTION 2 — For Artists
+  Q: How do I set up payouts?
+  A: Go to your Profile, tap Payout Method, and connect your Stripe 
+     account. You'll need to complete Stripe's identity verification 
+     before you can receive payouts.
+  Q: When do I receive my payout after a session?
+  A: Payouts are processed through Stripe Connect and typically arrive 
+     in 2–7 business days after the balance payment clears, depending 
+     on your bank.
+  Q: What is InkNow PRO?
+  A: PRO is a monthly subscription that gives artists reduced platform 
+     fees, priority placement, boost credits, detailed analytics, 
+     and advanced portfolio tools. A 30-day free trial is available 
+     for new subscribers.
+  Q: How do I cancel my PRO subscription?
+  A: Manage your subscription directly in your iPhone's App Store 
+     settings under Subscriptions. Your PRO access continues until 
+     the end of the current billing period.
+  Q: How do Boost Credits work?
+  A: Boosting places your profile higher in Explore results for 24 hours. 
+     Credits can be purchased in the app or earned through referrals 
+     and PRO renewals.
+  Q: How does the Top 50 Leaderboard work?
+  A: Rankings are calculated weekly based on bookings, reviews, portfolio 
+     engagement, and app activity in your metro city. The more active 
+     and highly reviewed you are, the higher your rank.
+SECTION 3 — Account & Technical
+  Q: I can't log in to my account.
+  A: Use the "Forgot Password" option on the login screen to reset your 
+     password via email. If you still can't access your account, 
+     email us at support@getinknow.com.
+  Q: How do I delete my account?
+  A: Go to Profile → Settings → Delete Account. This permanently removes 
+     your data. Booking records may be retained for legal purposes as 
+     outlined in our Privacy Policy.
+  Q: The app is crashing or showing an error.
+  A: Try closing and reopening the app, or updating to the latest version 
+     from the App Store. If the issue persists, email us with a brief 
+     description of what happened and what device you're using.
+  Q: I have a safety concern about a user.
+  A: Email us immediately at support@getinknow.com with as much detail 
+     as possible. We take safety seriously and will respond as a priority.
+--- CONTACT CARD ---
+Display this as a visually distinct card with a 1px gold (#D4AF37) border,
+#111111 background, and moderate padding (24–32px). Centered on the page.
+  Heading: "Still need help?"
+  Body: "Our team typically responds within 24 hours on business days."
+  Gold-colored email link: support@getinknow.com
+  Below the card, in small secondary text (#888888):
+  "For subscription billing issues, you can also contact Apple Support 
+   directly through your App Store account settings."
+--- LEGAL LINKS FOOTER ROW ---
+Just above the copyright line, add small secondary-text links:
+  Privacy Policy · Terms of Service
+  (linking to /privacy and /terms respectively)
