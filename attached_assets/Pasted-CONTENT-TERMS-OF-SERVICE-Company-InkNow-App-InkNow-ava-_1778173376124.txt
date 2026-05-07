@@ -1,0 +1,141 @@
+CONTENT — TERMS OF SERVICE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Company: InkNow
+App: InkNow — available on iOS
+Contact email: legal@getinknow.com  (replace with your real address)
+Effective date: [today's date]
+Tone: Plain English. Short paragraphs. Bullet lists where helpful. 
+Not a wall of legalese — approachable but complete.
+--- SECTIONS ---
+1. Acceptance of Terms
+   By creating an account or using InkNow, you agree to these Terms. 
+   If you do not agree, do not use the app. You must be 18 or older to use 
+   InkNow. These Terms apply to all users: Clients, Artists, and Shop Owners.
+2. What InkNow Is
+   InkNow is a two-sided marketplace that connects clients seeking tattoo and 
+   piercing services with independent artists. InkNow is a platform, not a 
+   tattoo studio. We do not employ artists, perform services, or guarantee 
+   the quality of any work. All service agreements are between the client 
+   and the artist directly.
+3. Accounts
+   - You are responsible for maintaining the security of your account 
+     credentials
+   - You may not share your account or impersonate another person
+   - You must provide accurate information when creating your account
+   - We reserve the right to suspend or terminate accounts that violate 
+     these Terms
+4. Bookings and Consultations
+   - All bookings begin with a consultation request submitted through the app
+   - Artists review requests and may accept, decline, or request more 
+     information
+   - A booking is confirmed only after the artist accepts and a deposit 
+     is paid
+   - InkNow does not guarantee artist availability or booking confirmation
+5. Deposits and Payments
+   - Deposits are required to secure an appointment and are processed 
+     through Stripe
+   - Deposit amounts are set by the artist and displayed before payment
+   - The remaining session balance is paid through InkNow at or after 
+     the appointment
+   - InkNow charges a platform service fee on balance payments 
+     (1.25% for PRO artists, 1.75% for free artists) which is deducted 
+     automatically
+   - Payments to artists are processed via Stripe Connect. InkNow is not 
+     responsible for delays caused by Stripe or banking institutions
+6. Cancellation Policy
+   - Cancellation terms are set by each individual artist and displayed 
+     during booking
+   - Deposits may be non-refundable depending on the artist's policy and 
+     how close to the appointment the cancellation occurs
+   - InkNow is not responsible for deposit refunds — disputes must be 
+     resolved between the client and artist
+   - Repeated no-shows or late cancellations may result in account 
+     suspension
+7. Travel Bookings
+   - Some artists offer travel services. Travel bookings require a separate 
+     deposit that includes a travel fee set by the artist
+   - The artist must approve travel requests before a travel booking 
+     is confirmed
+   - Travel deposit calculations are based on session price and travel fee 
+     as displayed at time of booking
+8. InkNow PRO Subscription
+   - InkNow PRO is a paid subscription for artists, offering enhanced 
+     visibility, lower platform fees, and additional tools
+   - Subscriptions are billed monthly or annually and managed through 
+     RevenueCat and the App Store
+   - A 30-day free trial may be offered to new PRO subscribers
+   - To cancel, manage your subscription in your App Store account settings 
+     — cancellation takes effect at the end of the current billing period
+   - Refunds for PRO subscriptions are handled by Apple per their standard 
+     refund policy. InkNow does not process subscription refunds directly
+9. Boost Credits
+   - Boost credits allow artists to increase their visibility in the app 
+     for 24 hours
+   - Credits can be purchased or earned. Purchased boost credits are 
+     non-refundable
+   - Boosts do not guarantee bookings or specific placement outcomes
+10. Artist Responsibilities
+    - Artists are independent contractors, not employees of InkNow
+    - Artists are solely responsible for the quality, safety, and legality 
+      of their services
+    - Artists must comply with all local health and safety regulations
+    - Artists must honor confirmed bookings or cancel with reasonable 
+      notice through the app
+    - Artists must maintain accurate availability and pricing information
+11. Client Responsibilities
+    - Clients must provide accurate information in consultation requests
+    - Clients must arrive on time to scheduled appointments
+    - Clients are responsible for reading and understanding the artist's 
+      cancellation policy before booking
+    - Clients must be 18 or older and must not misrepresent their age
+12. Content and Portfolio
+    - Artists retain ownership of their portfolio images uploaded to InkNow
+    - By uploading content, artists grant InkNow a non-exclusive license 
+      to display that content within the app and for promotional purposes
+    - Users may not upload content that is illegal, offensive, or 
+      infringes on third-party rights
+    - InkNow reserves the right to remove any content that violates 
+      these Terms
+13. Prohibited Conduct
+    Users may not:
+    - Use InkNow for any unlawful purpose
+    - Harass, threaten, or abuse other users
+    - Circumvent platform fees by arranging payments outside of InkNow 
+      after a consultation was initiated through the app
+    - Post false reviews or manipulate the ranking system
+    - Attempt to reverse engineer or scrape the InkNow platform
+14. Disputes Between Users
+    InkNow is not a party to disputes between clients and artists. We may 
+    provide communication records to assist in resolution but are not 
+    obligated to mediate or adjudicate disputes. For payment disputes 
+    involving chargebacks, InkNow reserves the right to suspend the 
+    account pending investigation.
+15. Limitation of Liability
+    To the fullest extent permitted by law, InkNow is not liable for:
+    - The quality or outcome of any tattoo or piercing service
+    - Actions or omissions of any artist or client on the platform
+    - Losses arising from payment processing delays or failures
+    - Any indirect, incidental, or consequential damages
+    InkNow's total liability to any user shall not exceed the total 
+    platform fees paid by that user in the 12 months prior to the claim.
+16. Indemnification
+    You agree to indemnify and hold InkNow harmless from any claims, 
+    damages, or expenses arising from your use of the platform, your 
+    content, or your violation of these Terms.
+17. Termination
+    We may suspend or terminate your account at any time for violations 
+    of these Terms. You may delete your account at any time through the 
+    app settings. Upon termination, your right to use InkNow ceases 
+    immediately. Booking records may be retained as required by law.
+18. Changes to These Terms
+    We may update these Terms at any time. Material changes will be 
+    communicated via the app or email. Continued use of InkNow after 
+    changes constitutes acceptance of the updated Terms.
+19. Governing Law
+    These Terms are governed by the laws of the State of [YOUR STATE], 
+    United States, without regard to conflict of law principles. 
+    Any disputes shall be resolved in the courts of [YOUR STATE/COUNTY].
+20. Contact
+    InkNow
+    Email: legal@getinknow.com
+    Website: getinknow.com

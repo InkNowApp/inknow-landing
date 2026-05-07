@@ -8,112 +8,215 @@ export default function Terms() {
           <img
             src={`${BASE}assets/logo.png`}
             alt="InkNow"
-            className="h-10 w-auto object-contain mix-blend-screen brightness-200"
+            className="h-16 w-auto object-contain mix-blend-screen brightness-200"
           />
         </a>
       </nav>
 
       <div className="max-w-2xl mx-auto px-6 py-16">
         <h1 className="text-4xl font-black mb-2">Terms of Service</h1>
-        <p className="text-white/40 text-sm mb-12">Last updated: 2026</p>
+        <p className="text-white/40 text-sm mb-12">Effective date: May 7, 2026</p>
 
-        <p className="text-white/70 leading-relaxed mb-10">
-          Welcome to InkNow. By using our website or app, you agree to these Terms of Service.
-        </p>
-
-        <Section number="1" title="Overview">
+        <Section number="1" title="Acceptance of Terms">
           <p className="text-white/70 leading-relaxed">
-            InkNow connects tattoo artists and clients. We provide tools for discovery, booking, communication, and payments. Artists are independent professionals, not employees of InkNow.
+            By creating an account or using InkNow, you agree to these Terms. If you do not agree, do not use the app. You must be 18 or older to use InkNow. These Terms apply to all users: Clients, Artists, and Shop Owners.
           </p>
         </Section>
 
-        <Section number="2" title="User Accounts">
+        <Section number="2" title="What InkNow Is">
           <p className="text-white/70 leading-relaxed">
-            You must provide accurate information when creating an account. You are responsible for keeping your login secure.
+            InkNow is a two-sided marketplace that connects clients seeking tattoo and piercing services with independent artists. InkNow is a platform, not a tattoo studio. We do not employ artists, perform services, or guarantee the quality of any work. All service agreements are between the client and the artist directly.
           </p>
         </Section>
 
-        <Section number="3" title="Artists">
-          <p className="text-white/70 leading-relaxed mb-3">Artists agree to:</p>
-          <ul className="space-y-2 mb-4">
-            {[
-              "Provide accurate pricing and portfolio information",
-              "Honor confirmed bookings",
-              "Follow local laws and safety regulations",
-              "Maintain professionalism with clients",
-            ].map((item) => <BulletItem key={item} text={item} />)}
-          </ul>
-          <p className="text-white/70 leading-relaxed">InkNow does not guarantee clients, income, or results.</p>
-        </Section>
-
-        <Section number="4" title="Clients">
-          <p className="text-white/70 leading-relaxed mb-3">Clients agree to:</p>
+        <Section number="3" title="Accounts">
           <ul className="space-y-2">
             {[
-              "Provide accurate booking information",
-              "Pay required deposits",
-              "Show up on time",
-              "Respect artist policies",
+              "You are responsible for maintaining the security of your account credentials",
+              "You may not share your account or impersonate another person",
+              "You must provide accurate information when creating your account",
+              "We reserve the right to suspend or terminate accounts that violate these Terms",
             ].map((item) => <BulletItem key={item} text={item} />)}
           </ul>
         </Section>
 
-        <Section number="5" title="Deposits & Cancellations">
+        <Section number="4" title="Bookings and Consultations">
           <ul className="space-y-2">
             {[
-              "Deposits are set by the artist.",
-              "Artists may cancel before a deposit is paid without penalty.",
-              "Confirmed bookings (with deposit) follow the artist's cancellation rules.",
+              "All bookings begin with a consultation request submitted through the app",
+              "Artists review requests and may accept, decline, or request more information",
+              "A booking is confirmed only after the artist accepts and a deposit is paid",
+              "InkNow does not guarantee artist availability or booking confirmation",
             ].map((item) => <BulletItem key={item} text={item} />)}
           </ul>
         </Section>
 
-        <Section number="6" title="Reliability Score">
-          <p className="text-white/70 leading-relaxed">
-            InkNow uses a Reliability Score to maintain trust. Low scores may limit visibility or booking access.
-          </p>
+        <Section number="5" title="Deposits and Payments">
+          <ul className="space-y-2">
+            {[
+              "Deposits are required to secure an appointment and are processed through Stripe",
+              "Deposit amounts are set by the artist and displayed before payment",
+              "The remaining session balance is paid through InkNow at or after the appointment",
+              "InkNow charges a platform service fee on balance payments (1.25% for PRO artists, 1.75% for free artists) which is deducted automatically",
+              "Payments to artists are processed via Stripe Connect. InkNow is not responsible for delays caused by Stripe or banking institutions",
+            ].map((item) => <BulletItem key={item} text={item} />)}
+          </ul>
         </Section>
 
-        <Section number="7" title="Payments">
-          <p className="text-white/70 leading-relaxed">
-            Payments are processed through third-party providers. InkNow does not store full payment information.
-          </p>
+        <Section number="6" title="Cancellation Policy">
+          <ul className="space-y-2">
+            {[
+              "Cancellation terms are set by each individual artist and displayed during booking",
+              "Deposits may be non-refundable depending on the artist's policy and how close to the appointment the cancellation occurs",
+              "InkNow is not responsible for deposit refunds — disputes must be resolved between the client and artist",
+              "Repeated no-shows or late cancellations may result in account suspension",
+            ].map((item) => <BulletItem key={item} text={item} />)}
+          </ul>
         </Section>
 
-        <Section number="8" title="Prohibited Behavior">
+        <Section number="7" title="Travel Bookings">
+          <ul className="space-y-2">
+            {[
+              "Some artists offer travel services. Travel bookings require a separate deposit that includes a travel fee set by the artist",
+              "The artist must approve travel requests before a travel booking is confirmed",
+              "Travel deposit calculations are based on session price and travel fee as displayed at time of booking",
+            ].map((item) => <BulletItem key={item} text={item} />)}
+          </ul>
+        </Section>
+
+        <Section number="8" title="InkNow PRO Subscription">
+          <ul className="space-y-2">
+            {[
+              "InkNow PRO is a paid subscription for artists, offering enhanced visibility, lower platform fees, and additional tools",
+              "Subscriptions are billed monthly or annually and managed through RevenueCat and the App Store",
+              "A 30-day free trial may be offered to new PRO subscribers",
+              "To cancel, manage your subscription in your App Store account settings — cancellation takes effect at the end of the current billing period",
+              "Refunds for PRO subscriptions are handled by Apple per their standard refund policy. InkNow does not process subscription refunds directly",
+            ].map((item) => <BulletItem key={item} text={item} />)}
+          </ul>
+        </Section>
+
+        <Section number="9" title="Boost Credits">
+          <ul className="space-y-2">
+            {[
+              "Boost credits allow artists to increase their visibility in the app for 24 hours",
+              "Credits can be purchased or earned. Purchased boost credits are non-refundable",
+              "Boosts do not guarantee bookings or specific placement outcomes",
+            ].map((item) => <BulletItem key={item} text={item} />)}
+          </ul>
+        </Section>
+
+        <Section number="10" title="Artist Responsibilities">
+          <ul className="space-y-2">
+            {[
+              "Artists are independent contractors, not employees of InkNow",
+              "Artists are solely responsible for the quality, safety, and legality of their services",
+              "Artists must comply with all local health and safety regulations",
+              "Artists must honor confirmed bookings or cancel with reasonable notice through the app",
+              "Artists must maintain accurate availability and pricing information",
+            ].map((item) => <BulletItem key={item} text={item} />)}
+          </ul>
+        </Section>
+
+        <Section number="11" title="Client Responsibilities">
+          <ul className="space-y-2">
+            {[
+              "Clients must provide accurate information in consultation requests",
+              "Clients must arrive on time to scheduled appointments",
+              "Clients are responsible for reading and understanding the artist's cancellation policy before booking",
+              "Clients must be 18 or older and must not misrepresent their age",
+            ].map((item) => <BulletItem key={item} text={item} />)}
+          </ul>
+        </Section>
+
+        <Section number="12" title="Content and Portfolio">
+          <ul className="space-y-2">
+            {[
+              "Artists retain ownership of their portfolio images uploaded to InkNow",
+              "By uploading content, artists grant InkNow a non-exclusive license to display that content within the app and for promotional purposes",
+              "Users may not upload content that is illegal, offensive, or infringes on third-party rights",
+              "InkNow reserves the right to remove any content that violates these Terms",
+            ].map((item) => <BulletItem key={item} text={item} />)}
+          </ul>
+        </Section>
+
+        <Section number="13" title="Prohibited Conduct">
           <p className="text-white/70 leading-relaxed mb-3">Users may not:</p>
           <ul className="space-y-2">
             {[
-              "Harass or threaten others",
-              "Post false information",
-              "Attempt fraud",
-              "Misuse the platform",
+              "Use InkNow for any unlawful purpose",
+              "Harass, threaten, or abuse other users",
+              "Circumvent platform fees by arranging payments outside of InkNow after a consultation was initiated through the app",
+              "Post false reviews or manipulate the ranking system",
+              "Attempt to reverse engineer or scrape the InkNow platform",
             ].map((item) => <BulletItem key={item} text={item} />)}
           </ul>
         </Section>
 
-        <Section number="9" title="Limitation of Liability">
-          <p className="text-white/70 leading-relaxed mb-3">InkNow is not responsible for:</p>
+        <Section number="14" title="Disputes Between Users">
+          <p className="text-white/70 leading-relaxed">
+            InkNow is not a party to disputes between clients and artists. We may provide communication records to assist in resolution but are not obligated to mediate or adjudicate disputes. For payment disputes involving chargebacks, InkNow reserves the right to suspend the account pending investigation.
+          </p>
+        </Section>
+
+        <Section number="15" title="Limitation of Liability">
+          <p className="text-white/70 leading-relaxed mb-3">To the fullest extent permitted by law, InkNow is not liable for:</p>
           <ul className="space-y-2 mb-4">
             {[
-              "Artist performance",
-              "Client behavior",
-              "Tattoo outcomes",
-              "Missed appointments",
+              "The quality or outcome of any tattoo or piercing service",
+              "Actions or omissions of any artist or client on the platform",
+              "Losses arising from payment processing delays or failures",
+              "Any indirect, incidental, or consequential damages",
             ].map((item) => <BulletItem key={item} text={item} />)}
           </ul>
           <p className="text-white/70 leading-relaxed">
-            We provide the platform — the work is between artist and client.
+            InkNow's total liability to any user shall not exceed the total platform fees paid by that user in the 12 months prior to the claim.
           </p>
         </Section>
 
-        <Section number="10" title="Contact">
-          <p className="text-white/70 leading-relaxed mb-2">
-            For questions about these Terms, contact us at:
+        <Section number="16" title="Indemnification">
+          <p className="text-white/70 leading-relaxed">
+            You agree to indemnify and hold InkNow harmless from any claims, damages, or expenses arising from your use of the platform, your content, or your violation of these Terms.
           </p>
-          <a href="mailto:support@getinknow.com" className="text-yellow-400 hover:text-yellow-300 transition-colors font-medium">
-            support@getinknow.com
-          </a>
+        </Section>
+
+        <Section number="17" title="Termination">
+          <p className="text-white/70 leading-relaxed">
+            We may suspend or terminate your account at any time for violations of these Terms. You may delete your account at any time through the app settings. Upon termination, your right to use InkNow ceases immediately. Booking records may be retained as required by law.
+          </p>
+        </Section>
+
+        <Section number="18" title="Changes to These Terms">
+          <p className="text-white/70 leading-relaxed">
+            We may update these Terms at any time. Material changes will be communicated via the app or email. Continued use of InkNow after changes constitutes acceptance of the updated Terms.
+          </p>
+        </Section>
+
+        <Section number="19" title="Governing Law">
+          <p className="text-white/70 leading-relaxed">
+            These Terms are governed by the laws of the State of Ohio, United States, without regard to conflict of law principles. Any disputes shall be resolved in the courts of Ohio.
+          </p>
+        </Section>
+
+        <Section number="20" title="Contact">
+          <p className="text-white/70 leading-relaxed mb-4">
+            For questions about these Terms, reach out to us:
+          </p>
+          <div className="space-y-1 text-white/70">
+            <p className="font-semibold text-white">InkNow LLC</p>
+            <p>
+              Email:{" "}
+              <a href="mailto:support@getinknow.com" className="text-yellow-400 hover:text-yellow-300 transition-colors">
+                support@getinknow.com
+              </a>
+            </p>
+            <p>
+              Website:{" "}
+              <a href="https://getinknow.com" className="text-yellow-400 hover:text-yellow-300 transition-colors">
+                getinknow.com
+              </a>
+            </p>
+          </div>
         </Section>
       </div>
 
@@ -146,7 +249,7 @@ function Footer() {
     <footer className="border-t border-white/6 py-10 px-6 mt-10">
       <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
         <img src={`${BASE}assets/logo.png`} alt="InkNow" className="h-8 w-auto object-contain mix-blend-screen brightness-200" />
-        <p className="text-white/25 text-sm">© 2026 InkNow. All rights reserved.</p>
+        <p className="text-white/25 text-sm">© 2026 InkNow LLC. All rights reserved.</p>
         <div className="flex items-center gap-5 text-white/30 text-sm">
           <a href={`${BASE}privacy`} className="hover:text-white/60 transition-colors">Privacy</a>
           <a href={`${BASE}terms`} className="hover:text-white/60 transition-colors">Terms</a>
