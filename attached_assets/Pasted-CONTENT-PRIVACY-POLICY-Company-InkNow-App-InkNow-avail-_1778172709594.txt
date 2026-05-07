@@ -1,0 +1,76 @@
+CONTENT — PRIVACY POLICY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Company: InkNow
+App: InkNow — available on iOS
+Contact email: privacy@getinknow.com  (replace with your real address)
+Effective date: [today's date]
+Write the following sections. Tone: clear, plain English — not legalese walls 
+of text. Short paragraphs. Use real bullet lists where it helps readability.
+--- SECTIONS ---
+1. Introduction
+   InkNow is a marketplace connecting clients with tattoo and piercing artists. 
+   This policy explains what data we collect, how we use it, and your rights. 
+   By using InkNow you agree to this policy.
+2. Information We Collect
+   a) Account Information
+      - Name, email address, phone number (optional)
+      - Profile photo (optional)
+      - Role: Client, Artist, or Shop Owner
+      - ZIP code and state (used to assign your metro city)
+   b) Booking & Consultation Data
+      - Tattoo style preferences, placement, size, description
+      - Reference photos you upload
+      - Appointment dates, session notes, consent form responses
+      - Deposit and payment amounts
+   c) Payment Information
+      - Payments are processed by Stripe. InkNow does not store full card 
+        numbers. Artists receive payouts via Stripe Connect.
+      - Subscription billing is managed by RevenueCat.
+   d) Usage Data
+      - App interactions, screen views, portfolio engagement (likes, views, 
+        shares, bookmarks)
+      - Push notification tokens
+      - Device type, operating system version
+   e) Location Data
+      - We use your ZIP code and state to match you with artists in your metro 
+        area. We do not collect GPS location.
+3. How We Use Your Information
+   - To match clients with artists and facilitate bookings
+   - To process payments and send receipts
+   - To send booking confirmations, reminders, and aftercare instructions 
+     via push notification and email
+   - To power the InkNow PRO leaderboard and ranking system
+   - To improve the app and detect fraud or abuse
+   - We do not sell your data to third parties
+4. Data Sharing
+   - Artists see client consultation details, reference photos, and contact 
+     info needed to fulfill bookings
+   - Clients see artist portfolio, shop name, availability, and public profile
+   - Stripe and RevenueCat receive payment data as required for processing
+   - We may share data with law enforcement if required by law
+5. Data Retention
+   - Account data is retained while your account is active
+   - Booking records are kept for 3 years for legal and tax purposes
+   - You can request account deletion at any time (see Your Rights below)
+6. Your Rights
+   - Access: Request a copy of your personal data
+   - Correction: Update or correct inaccurate information in your profile
+   - Deletion: Request deletion of your account and associated data
+   - Opt-out: Disable push notifications in your device settings at any time
+   To exercise these rights, email privacy@getinknow.com
+7. Children's Privacy
+   InkNow is not intended for users under 18. We do not knowingly collect 
+   data from minors. If you believe a minor has created an account, contact us 
+   and we will remove it promptly.
+8. Security
+   We use industry-standard encryption in transit (TLS) and at rest. Passwords 
+   are never stored in plain text. Payment data is handled exclusively by 
+   PCI-compliant third parties (Stripe).
+9. Changes to This Policy
+   We may update this policy periodically. We'll notify you via the app or 
+   email for material changes. Continued use of InkNow after changes 
+   constitutes acceptance.
+10. Contact Us
+    InkNow
+    Email: privacy@getinknow.com
+    Website: getinknow.com
