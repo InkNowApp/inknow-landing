@@ -1,0 +1,31 @@
+InkNow should have in its terms — here's what matters most for a tattoo booking marketplace:
+
+Payment & Disputes
+
+Off-platform payments are not recognized (already discussed)
+Chargeback/dispute policy — fraudulent chargebacks result in immediate account suspension pending review
+InkNow's platform fee is non-refundable regardless of dispute outcome
+Deposit refunds are governed by the artist's cancellation policy, not InkNow
+No-Show & Cancellation
+
+Clients who accumulate a certain number of no-shows may have their account restricted
+Artists who repeatedly cancel booked appointments may lose platform access
+What constitutes a "late cancellation" vs a standard one (within X hours of appointment)
+Age Requirement
+
+Users must be 18+ to use InkNow — tattooing minors is illegal in most jurisdictions and InkNow takes no responsibility if an artist performs work on an underage client
+Artist Independent Contractor Status
+
+Artists are independent contractors, not InkNow employees — InkNow is not liable for the quality, safety, or outcome of any tattoo or piercing service
+Artists are solely responsible for maintaining proper licenses, health certifications, and complying with local regulations
+Content & Portfolio
+
+By submitting a consultation or completing a booking, clients grant InkNow and the artist permission to photograph and publish the completed tattoo in the artist's portfolio, unless opted out
+Artists must own or have rights to all portfolio content they upload
+Account Suspension Triggers
+
+Explicitly list what gets an account locked: off-platform payments, chargebacks, no-shows, harassment, attempting to book through InkNow then pay outside — this removes all "I didn't know" defenses
+Health & Safety Disclaimer
+
+InkNow does not verify artist sterilization practices, health department certifications, or studio cleanliness — clients are responsible for vetting their artist's credentials before a session
+Those are the ones that would actually hold up if something went wrong and you needed to point a user to a specific policy.
