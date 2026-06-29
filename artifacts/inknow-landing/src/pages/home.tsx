@@ -318,6 +318,39 @@ export default function Home() {
         </div>
       </section>
 
+      {/* COMMUNITY */}
+      <section className="py-28 px-6 bg-[#0a0a0a]">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+          {/* Copy */}
+          <div className="flex flex-col gap-8">
+            <div>
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/5 text-white/40 text-xs font-medium w-fit mb-4">
+                <span className="w-1.5 h-1.5 rounded-full bg-white/30" />
+                Coming Soon — Phase 2
+              </div>
+              <p className="text-yellow-500/70 text-xs font-bold tracking-[0.25em] uppercase mb-4">Artist Community</p>
+              <h2 className="text-4xl md:text-5xl font-black leading-tight">A private space built for artists.</h2>
+              <p className="text-white/45 text-lg mt-4 leading-relaxed">
+                Share work in progress, ask the community questions, post about events and conventions, and connect with other artists in your city.
+              </p>
+            </div>
+            <div className="flex flex-col gap-5">
+              <TrustPillar icon="📸" title="Photo Drops" desc="Post WIP shots, healed pieces, and fresh work directly to the artist feed." />
+              <TrustPillar icon="❓" title="Q&A Posts" desc="Ask the community anything — suppliers, techniques, pricing, business advice." />
+              <TrustPillar icon="📣" title="Events & Conventions" desc="Announce upcoming conventions, guest spots, and pop-ups to the entire network." />
+              <TrustPillar icon="📍" title="Local Artist Network" desc="Connect with verified artists in your city — one feed, your whole market." />
+            </div>
+            <div className="p-4 rounded-xl border border-white/8 bg-white/[0.02] text-white/30 text-sm leading-relaxed">
+              Visible only to verified InkNow artists. Text posts, photo drops, Q&As, and event announcements — all in one feed.
+            </div>
+          </div>
+          {/* Phone */}
+          <div className="flex justify-center">
+            <Phone src={`${BASE}assets/screen-community.jpg`} alt="Artist Community feed" />
+          </div>
+        </div>
+      </section>
+
       {/* WHY INKNOW */}
       <section className="py-28 px-6">
         <div className="max-w-6xl mx-auto">
