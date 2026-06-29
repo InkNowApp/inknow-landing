@@ -107,14 +107,17 @@ const Icons = {
 };
 
 /* ── Reusable components ────────────────────────────────────── */
-function Phone({ src, alt, className = "" }: { src: string; alt: string; className?: string }) {
+function Phone({ src, alt, className = "", width = 220, height = 476 }: { src: string; alt: string; className?: string; width?: number; height?: number }) {
+  const notchW = Math.round(width * 0.44);
+  const notchH = Math.round(height * 0.046);
+  const radius = Math.round(width * 0.173);
   return (
-    <div className={`relative flex-shrink-0 ${className}`} style={{ width: 220, height: 476 }}>
+    <div className={`relative flex-shrink-0 ${className}`} style={{ width, height }}>
       <div
-        className="absolute inset-0 rounded-[38px] border border-white/10 bg-[#111] overflow-hidden"
-        style={{ boxShadow: "0 0 0 1px rgba(255,255,255,0.06), 0 40px 80px rgba(0,0,0,0.7)" }}
+        className="absolute inset-0 bg-[#111] overflow-hidden"
+        style={{ borderRadius: radius, border: "1px solid rgba(255,255,255,0.10)", boxShadow: "0 0 0 1px rgba(255,255,255,0.06), 0 40px 80px rgba(0,0,0,0.7)" }}
       >
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-[22px] bg-[#111] rounded-b-2xl z-10" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 bg-[#111] z-10" style={{ width: notchW, height: notchH, borderBottomLeftRadius: 8, borderBottomRightRadius: 8 }} />
         <img src={src} alt={alt} className="w-full h-full object-cover object-top" />
       </div>
     </div>
@@ -326,8 +329,9 @@ export default function Home() {
       {/* CLIENT FEATURES */}
       <section id="features" className="py-28 px-6 bg-[#0a0a0a]">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-          <div className="flex justify-center items-center py-8">
-            <Phone src={`${BASE}assets/screen-deposit.jpg`} alt="Pay deposit" />
+          <div className="flex justify-center items-end gap-4 py-8">
+            <Phone src={`${BASE}assets/screen-consult.jpg`} alt="Request consultation" width={175} height={379} className="mb-6 opacity-80" />
+            <Phone src={`${BASE}assets/screen-deposit.jpg`} alt="Pay deposit" width={175} height={379} />
           </div>
           <div className="flex flex-col gap-8">
             <div>
@@ -380,8 +384,9 @@ export default function Home() {
               </a>
             </div>
           </div>
-          <div className="flex justify-center items-center py-8">
-            <Phone src={`${BASE}assets/screen-artist-dash.jpg`} alt="Artist dashboard" />
+          <div className="flex justify-center items-end gap-4 py-8">
+            <Phone src={`${BASE}assets/screen-artist-dash.jpg`} alt="Artist dashboard" width={175} height={379} />
+            <Phone src={`${BASE}assets/screen-availability.jpg`} alt="Availability calendar" width={175} height={379} className="mb-6 opacity-80" />
           </div>
         </div>
       </section>
