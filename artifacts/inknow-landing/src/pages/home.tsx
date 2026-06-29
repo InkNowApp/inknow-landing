@@ -329,9 +329,9 @@ export default function Home() {
       {/* CLIENT FEATURES */}
       <section id="features" className="py-28 px-6 bg-[#0a0a0a]">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-          <div className="flex justify-center items-end gap-4 py-8">
-            <Phone src={`${BASE}assets/screen-consult.jpg`} alt="Request consultation" width={175} height={379} className="mb-6 opacity-80" />
-            <Phone src={`${BASE}assets/screen-deposit.jpg`} alt="Pay deposit" width={175} height={379} />
+          <div className="flex justify-center items-end gap-5 py-8">
+            <Phone src={`${BASE}assets/screen-consult.jpg`} alt="Request consultation" className="mb-10 opacity-75" />
+            <Phone src={`${BASE}assets/screen-deposit.jpg`} alt="Pay deposit" />
           </div>
           <div className="flex flex-col gap-8">
             <div>
@@ -384,9 +384,9 @@ export default function Home() {
               </a>
             </div>
           </div>
-          <div className="flex justify-center items-end gap-4 py-8">
-            <Phone src={`${BASE}assets/screen-artist-dash.jpg`} alt="Artist dashboard" width={175} height={379} />
-            <Phone src={`${BASE}assets/screen-availability.jpg`} alt="Availability calendar" width={175} height={379} className="mb-6 opacity-80" />
+          <div className="flex justify-center items-end gap-5 py-8">
+            <Phone src={`${BASE}assets/screen-artist-dash.jpg`} alt="Artist dashboard" />
+            <Phone src={`${BASE}assets/screen-availability.jpg`} alt="Availability calendar" className="mb-10 opacity-75" />
           </div>
         </div>
       </section>
