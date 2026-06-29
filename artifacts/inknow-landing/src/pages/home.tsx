@@ -1,5 +1,112 @@
+import type { ReactNode } from "react";
 const BASE = import.meta.env.BASE_URL;
 
+/* ── SVG icon set ───────────────────────────────────────────── */
+const Icons = {
+  search: (
+    <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+      <circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/>
+    </svg>
+  ),
+  document: (
+    <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+      <path d="M9 12h6m-6 4h6M7 4H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V8l-5-4H7z"/>
+    </svg>
+  ),
+  needle: (
+    <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+      <path d="M12 3v18M3 12h18"/>
+      <circle cx="12" cy="12" r="3"/>
+    </svg>
+  ),
+  grid: (
+    <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+      <rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/>
+      <rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>
+    </svg>
+  ),
+  chat: (
+    <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+      <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+    </svg>
+  ),
+  lock: (
+    <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+      <rect x="5" y="11" width="14" height="11" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/>
+    </svg>
+  ),
+  calendar: (
+    <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+      <rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>
+    </svg>
+  ),
+  star: (
+    <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+    </svg>
+  ),
+  layers: (
+    <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+      <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+    </svg>
+  ),
+  payment: (
+    <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+      <rect x="2" y="6" width="20" height="14" rx="2"/><path d="M2 10h20M7 15h2m4 0h2"/>
+    </svg>
+  ),
+  send: (
+    <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+      <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+    </svg>
+  ),
+  trophy: (
+    <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+      <path d="M8 21h8m-4-4v4M7 4H5a2 2 0 00-2 2v3a4 4 0 004 4h.5M17 4h2a2 2 0 012 2v3a4 4 0 01-4 4h-.5"/>
+      <path d="M7 4h10v7a5 5 0 01-10 0V4z"/>
+    </svg>
+  ),
+  camera: (
+    <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+      <path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/>
+      <circle cx="12" cy="13" r="4"/>
+    </svg>
+  ),
+  question: (
+    <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="10"/>
+      <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3m.08 4h.01"/>
+    </svg>
+  ),
+  megaphone: (
+    <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+      <path d="M3 11v2m0 0a9 9 0 009 9 9 9 0 009-9 9 9 0 00-9-9 9 9 0 00-9 9zm0 0h18"/>
+    </svg>
+  ),
+  mappin: (
+    <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
+    </svg>
+  ),
+  shield: (
+    <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+    </svg>
+  ),
+  check: (
+    <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+      <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/>
+    </svg>
+  ),
+  flow: (
+    <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+      <circle cx="5" cy="6" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="12" cy="18" r="2"/>
+      <path d="M7 6h10M14.5 7.5l-2.5 9M9.5 7.5l2.5 9"/>
+    </svg>
+  ),
+};
+
+/* ── Reusable components ────────────────────────────────────── */
 function Phone({ src, alt, className = "" }: { src: string; alt: string; className?: string }) {
   return (
     <div className={`relative flex-shrink-0 ${className}`} style={{ width: 220, height: 476 }}>
@@ -14,14 +121,16 @@ function Phone({ src, alt, className = "" }: { src: string; alt: string; classNa
   );
 }
 
-function StepCard({ number, icon, title, desc }: { number: string; icon: string; title: string; desc: string }) {
+function StepCard({ number, icon, title, desc }: { number: string; icon: ReactNode; title: string; desc: string }) {
   return (
-    <div className="flex flex-col gap-4 p-7 rounded-2xl border border-white/8 bg-white/[0.03] hover:border-yellow-500/20 hover:bg-white/[0.05] transition-all duration-300 group">
+    <div className="flex flex-col gap-5 p-7 rounded-2xl border border-white/8 bg-white/[0.03] hover:border-yellow-500/20 hover:bg-white/[0.05] transition-all duration-300">
       <div className="flex items-center gap-3">
         <span className="text-yellow-500/60 text-xs font-bold tracking-[0.2em] uppercase">{number}</span>
         <div className="h-px flex-1 bg-white/8" />
       </div>
-      <div className="text-3xl">{icon}</div>
+      <div className="w-10 h-10 rounded-xl bg-white/6 border border-white/8 flex items-center justify-center text-white/60">
+        {icon}
+      </div>
       <div>
         <h3 className="text-white font-bold text-lg mb-2">{title}</h3>
         <p className="text-white/50 text-sm leading-relaxed">{desc}</p>
@@ -30,10 +139,10 @@ function StepCard({ number, icon, title, desc }: { number: string; icon: string;
   );
 }
 
-function TrustPillar({ icon, title, desc }: { icon: string; title: string; desc: string }) {
+function TrustPillar({ icon, title, desc }: { icon: ReactNode; title: string; desc: string }) {
   return (
     <div className="flex gap-4 items-start">
-      <div className="w-10 h-10 rounded-xl bg-yellow-500/10 border border-yellow-500/20 flex items-center justify-center flex-shrink-0 text-lg">
+      <div className="w-9 h-9 rounded-xl bg-white/5 border border-white/8 flex items-center justify-center flex-shrink-0 text-white/50">
         {icon}
       </div>
       <div>
@@ -45,37 +154,44 @@ function TrustPillar({ icon, title, desc }: { icon: string; title: string; desc:
 }
 
 function ArtistCard({
-  name, location, styles, rating, reviews, price, verified
+  name, location, styles, rating, reviews, price, verified, initials, accent
 }: {
-  name: string; location: string; styles: string[]; rating: number; reviews: number; price: string; verified?: boolean;
+  name: string; location: string; styles: string[]; rating: number; reviews: number;
+  price: string; verified?: boolean; initials: string; accent: string;
 }) {
   return (
-    <div className="rounded-2xl border border-white/8 bg-[#111] overflow-hidden hover:border-white/16 transition-all duration-300 group">
-      <div className="h-40 bg-gradient-to-br from-white/5 to-white/[0.02] flex items-center justify-center">
-        <div className="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center text-2xl">🎨</div>
+    <div className="rounded-2xl border border-white/8 bg-[#111] overflow-hidden hover:border-white/16 transition-all duration-300">
+      <div className={`h-36 ${accent} flex items-end px-5 pb-4`}>
+        <div className="w-14 h-14 rounded-2xl bg-black/40 backdrop-blur-sm border border-white/10 flex items-center justify-center">
+          <span className="text-white font-black text-lg tracking-tight">{initials}</span>
+        </div>
       </div>
       <div className="p-5">
-        <div className="flex items-start justify-between mb-3">
+        <div className="flex items-start justify-between mb-2">
           <div>
             <div className="flex items-center gap-1.5">
               <span className="text-white font-bold text-base">{name}</span>
-              {verified && <span className="text-[#4A9EFF] text-sm">✓</span>}
+              {verified && (
+                <svg className="w-3.5 h-3.5 text-[#4A9EFF]" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+              )}
             </div>
-            <span className="text-white/40 text-xs">{location}</span>
+            <span className="text-white/35 text-xs">{location}</span>
           </div>
-          <span className="text-white/70 text-sm font-medium">{price}</span>
+          <span className="text-white/60 text-xs font-medium">{price}</span>
         </div>
         <div className="flex items-center gap-1 mb-3">
-          <span className="text-yellow-400 text-xs">★</span>
+          <svg className="w-3 h-3 text-yellow-400 fill-yellow-400" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
           <span className="text-white/70 text-xs font-semibold">{rating}</span>
-          <span className="text-white/30 text-xs">({reviews})</span>
+          <span className="text-white/25 text-xs">({reviews})</span>
         </div>
         <div className="flex flex-wrap gap-1.5">
           {styles.map(s => (
-            <span key={s} className="px-2.5 py-1 rounded-full bg-white/6 border border-white/8 text-white/50 text-xs">{s}</span>
+            <span key={s} className="px-2.5 py-1 rounded-full bg-white/5 border border-white/8 text-white/45 text-xs">{s}</span>
           ))}
         </div>
-        <button className="mt-4 w-full py-2.5 rounded-xl bg-white/6 hover:bg-white/10 border border-white/8 text-white/70 text-sm font-medium transition-all">
+        <button className="mt-4 w-full py-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/8 text-white/60 text-sm font-medium transition-all">
           View Profile
         </button>
       </div>
@@ -83,6 +199,7 @@ function ArtistCard({
   );
 }
 
+/* ── Page ───────────────────────────────────────────────────── */
 export default function Home() {
   return (
     <div className="min-h-screen bg-[#0C0C0C] text-white overflow-x-hidden">
@@ -112,17 +229,15 @@ export default function Home() {
 
       {/* HERO */}
       <section className="relative min-h-screen flex items-center pt-24 pb-16 px-6 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-radial from-yellow-500/5 via-transparent to-transparent" style={{ background: "radial-gradient(ellipse 60% 50% at 65% 50%, rgba(201,168,76,0.07) 0%, transparent 70%)" }} />
+        <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 60% 50% at 65% 50%, rgba(201,168,76,0.07) 0%, transparent 70%)" }} />
         <div className="absolute top-1/4 right-0 w-96 h-96 rounded-full bg-yellow-500/4 blur-[120px] pointer-events-none" />
 
         <div className="max-w-7xl mx-auto w-full grid md:grid-cols-2 gap-12 items-center">
-          {/* Left: Copy */}
           <div className="flex flex-col gap-6 z-10">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-yellow-500/20 bg-yellow-500/5 text-yellow-400 text-xs font-medium w-fit">
               <span className="w-1.5 h-1.5 rounded-full bg-yellow-400 animate-pulse" />
               Now available across all 50 states
             </div>
-
             <div>
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-black leading-[0.95] tracking-tight">
                 Book Tattoos<br />
@@ -132,11 +247,9 @@ export default function Home() {
                 The Future of Tattoo Booking.
               </p>
             </div>
-
             <p className="text-white/55 text-lg leading-relaxed max-w-md">
               Discover artists, explore real portfolios, and book confidently — consultations, deposits, and payments all in one place.
             </p>
-
             <div className="flex flex-col sm:flex-row gap-3 mt-2">
               <a
                 href="https://apps.apple.com"
@@ -153,41 +266,26 @@ export default function Home() {
                 <svg className="w-4 h-4 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
               </a>
             </div>
-
-            {/* Micro trust signals */}
             <div className="flex items-center gap-6 mt-2 text-white/30 text-xs">
               <div className="flex items-center gap-1.5">
-                <svg className="w-3.5 h-3.5 text-yellow-500/60" fill="currentColor" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                <svg className="w-3.5 h-3.5 text-yellow-500/60" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                 Secure payments
               </div>
               <div className="flex items-center gap-1.5">
-                <svg className="w-3.5 h-3.5 text-yellow-500/60" fill="currentColor" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                <svg className="w-3.5 h-3.5 text-yellow-500/60" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                 Verified artists
               </div>
               <div className="flex items-center gap-1.5">
-                <svg className="w-3.5 h-3.5 text-yellow-500/60" fill="currentColor" viewBox="0 0 24 24"><path d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
+                <svg className="w-3.5 h-3.5 text-yellow-500/60" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
                 Free for clients
               </div>
             </div>
           </div>
 
-          {/* Right: Phone mockups */}
           <div className="relative flex justify-center items-center h-[520px] z-10">
-            <Phone
-              src={`${BASE}assets/screen-profile.jpg`}
-              alt="Artist profile"
-              className="absolute left-0 top-8 opacity-60 scale-90"
-            />
-            <Phone
-              src={`${BASE}assets/screen-discover.jpg`}
-              alt="Discover artists"
-              className="relative z-10 shadow-2xl"
-            />
-            <Phone
-              src={`${BASE}assets/screen-explore.jpg`}
-              alt="Explore styles"
-              className="absolute right-0 top-8 opacity-60 scale-90"
-            />
+            <Phone src={`${BASE}assets/screen-profile.jpg`} alt="Artist profile" className="absolute left-0 top-8 opacity-60 scale-90" />
+            <Phone src={`${BASE}assets/screen-discover.jpg`} alt="Discover artists" className="relative z-10 shadow-2xl" />
+            <Phone src={`${BASE}assets/screen-explore.jpg`} alt="Explore styles" className="absolute right-0 top-8 opacity-60 scale-90" />
           </div>
         </div>
       </section>
@@ -218,9 +316,9 @@ export default function Home() {
             <p className="text-white/40 text-lg mt-4 max-w-md mx-auto">Three steps between you and the tattoo you've been thinking about.</p>
           </div>
           <div className="grid md:grid-cols-3 gap-4">
-            <StepCard number="01" icon="🔍" title="Find Your Artist" desc="Browse verified portfolios by style, location, and availability. Filter by Realism, Blackwork, Fine Line, Watercolor, and more." />
-            <StepCard number="02" icon="📋" title="Book Securely" desc="Send a consultation request with reference photos. Once approved, sign your consent form and pay your deposit — all in-app." />
-            <StepCard number="03" icon="✨" title="Get Inked" desc="Show up confident. Track your booking, message your artist, pay the session balance, and leave a review when you're done." />
+            <StepCard number="01" icon={Icons.search} title="Find Your Artist" desc="Browse verified portfolios by style, location, and availability. Filter by Realism, Blackwork, Fine Line, Watercolor, and more." />
+            <StepCard number="02" icon={Icons.document} title="Book Securely" desc="Send a consultation request with reference photos. Once approved, sign your consent form and pay your deposit — all in-app." />
+            <StepCard number="03" icon={Icons.needle} title="Get Inked" desc="Show up confident. Track your booking, message your artist, pay the session balance, and leave a review when you're done." />
           </div>
         </div>
       </section>
@@ -228,13 +326,11 @@ export default function Home() {
       {/* CLIENT FEATURES */}
       <section id="features" className="py-28 px-6 bg-[#0a0a0a]">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-          {/* Phones */}
           <div className="relative flex justify-center items-end gap-4 h-[520px]">
             <Phone src={`${BASE}assets/screen-consult.jpg`} alt="Request consultation" className="translate-y-8 opacity-70 scale-95" />
             <Phone src={`${BASE}assets/screen-deposit.jpg`} alt="Pay deposit" className="z-10" />
             <Phone src={`${BASE}assets/screen-appt.jpg`} alt="Appointment details" className="translate-y-8 opacity-70 scale-95" />
           </div>
-          {/* Copy */}
           <div className="flex flex-col gap-8">
             <div>
               <p className="text-yellow-500/70 text-xs font-bold tracking-[0.25em] uppercase mb-4">For Clients</p>
@@ -242,11 +338,11 @@ export default function Home() {
               <p className="text-white/45 text-lg mt-4 leading-relaxed">From discovery to aftercare, InkNow keeps your entire tattoo journey in one place.</p>
             </div>
             <div className="flex flex-col gap-5">
-              <TrustPillar icon="🎨" title="Browse by Style" desc="Traditional, Realism, Blackwork, Fine Line, Watercolor, Japanese, and more — filter by what you love." />
-              <TrustPillar icon="💬" title="Consultation First" desc="Send a request with your reference photos and vision. Artists review and respond — no cold DMs." />
-              <TrustPillar icon="🔒" title="Secure Deposits" desc="Lock in your appointment with a deposit processed through InkNow. Your money is protected." />
-              <TrustPillar icon="📅" title="Track Everything" desc="Active bookings, past sessions, and canceled appointments all organized in one place." />
-              <TrustPillar icon="⭐" title="Rate & Follow" desc="Leave honest reviews and follow your favorite artists to stay up to date on availability." />
+              <TrustPillar icon={Icons.grid} title="Browse by Style" desc="Traditional, Realism, Blackwork, Fine Line, Watercolor, Japanese, and more — filter by what you love." />
+              <TrustPillar icon={Icons.chat} title="Consultation First" desc="Send a request with your reference photos and vision. Artists review and respond — no cold DMs." />
+              <TrustPillar icon={Icons.lock} title="Secure Deposits" desc="Lock in your appointment with a deposit processed through InkNow. Your money is protected." />
+              <TrustPillar icon={Icons.calendar} title="Track Everything" desc="Active bookings, past sessions, and canceled appointments all organized in one place." />
+              <TrustPillar icon={Icons.star} title="Rate & Follow" desc="Leave honest reviews and follow your favorite artists to stay up to date on availability." />
             </div>
             <a
               href="https://apps.apple.com"
@@ -262,7 +358,6 @@ export default function Home() {
       {/* ARTIST FEATURES */}
       <section id="for-artists" className="py-28 px-6">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-          {/* Copy */}
           <div className="flex flex-col gap-8">
             <div>
               <p className="text-yellow-500/70 text-xs font-bold tracking-[0.25em] uppercase mb-4">For Artists</p>
@@ -270,11 +365,11 @@ export default function Home() {
               <p className="text-white/45 text-lg mt-4 leading-relaxed">Manage your full booking lifecycle without chasing clients over DMs. InkNow handles it.</p>
             </div>
             <div className="flex flex-col gap-5">
-              <TrustPillar icon="📁" title="Portfolio That Converts" desc="Showcase your work with style, size, and placement tags. Clients find you by what they actually want." />
-              <TrustPillar icon="📆" title="Availability Calendar" desc="Set your weekly schedule, block days off, and add special openings. Clients only see when you're open." />
-              <TrustPillar icon="💰" title="Get Paid via Stripe" desc="Deposits and balances hit your Stripe account directly. No invoice chasing, no cash awkwardness." />
-              <TrustPillar icon="📣" title="Blast Messages" desc="Send updates or promos to your entire client list in one tap. Stay top of mind." />
-              <TrustPillar icon="🏆" title="Top 50 City Rankings" desc="Rank in your city's weekly leaderboard. More visibility, more serious clients." />
+              <TrustPillar icon={Icons.layers} title="Portfolio That Converts" desc="Showcase your work with style, size, and placement tags. Clients find you by what they actually want." />
+              <TrustPillar icon={Icons.calendar} title="Availability Calendar" desc="Set your weekly schedule, block days off, and add special openings. Clients only see when you're open." />
+              <TrustPillar icon={Icons.payment} title="Get Paid via Stripe" desc="Deposits and balances hit your Stripe account directly. No invoice chasing, no cash awkwardness." />
+              <TrustPillar icon={Icons.send} title="Blast Messages" desc="Send updates or promos to your entire client list in one tap. Stay top of mind." />
+              <TrustPillar icon={Icons.trophy} title="Top 50 City Rankings" desc="Rank in your city's weekly leaderboard. More visibility, more serious clients." />
             </div>
             <div className="flex flex-col gap-3 p-5 rounded-2xl border border-yellow-500/20 bg-yellow-500/5">
               <div className="flex items-center gap-2">
@@ -287,7 +382,6 @@ export default function Home() {
               </a>
             </div>
           </div>
-          {/* Phones */}
           <div className="relative flex justify-center items-end gap-4 h-[520px]">
             <Phone src={`${BASE}assets/screen-artist-consult.jpg`} alt="Consultation requests" className="translate-y-8 opacity-70 scale-95" />
             <Phone src={`${BASE}assets/screen-artist-dash.jpg`} alt="Artist dashboard" className="z-10" />
@@ -305,9 +399,9 @@ export default function Home() {
             <p className="text-white/40 text-lg mt-4 max-w-sm mx-auto">Verified portfolios. Real ratings. Every style, every city.</p>
           </div>
           <div className="grid md:grid-cols-3 gap-5">
-            <ArtistCard name="TatsByTut" location="Ink District · Warren, OH" styles={["Realism", "Blackwork", "Piercing"]} rating={4.8} reviews={32} price="Contact for pricing" verified />
-            <ArtistCard name="InkByJay" location="Independent · Atlanta, GA" styles={["Fine Line", "Geometric", "Minimalist"]} rating={5.0} reviews={12} price="$120/hr" verified />
-            <ArtistCard name="TatGurl" location="Studio 7 · Austin, TX" styles={["Traditional", "Watercolor", "Piercing"]} rating={5.0} reviews={8} price="$95/hr" verified />
+            <ArtistCard name="TatsByTut" location="Ink District · Warren, OH" styles={["Realism", "Blackwork", "Piercing"]} rating={4.8} reviews={32} price="Contact for pricing" verified initials="TT" accent="bg-gradient-to-br from-zinc-800 to-zinc-900" />
+            <ArtistCard name="InkByJay" location="Independent · Atlanta, GA" styles={["Fine Line", "Geometric", "Minimalist"]} rating={5.0} reviews={12} price="$120/hr" verified initials="IJ" accent="bg-gradient-to-br from-stone-800 to-zinc-900" />
+            <ArtistCard name="TatGurl" location="Studio 7 · Austin, TX" styles={["Traditional", "Watercolor", "Piercing"]} rating={5.0} reviews={8} price="$95/hr" verified initials="TG" accent="bg-gradient-to-br from-neutral-800 to-zinc-900" />
           </div>
           <div className="text-center mt-10">
             <a href="https://apps.apple.com" className="inline-flex items-center gap-2 text-white/40 hover:text-white/70 text-sm transition-colors">
@@ -319,9 +413,8 @@ export default function Home() {
       </section>
 
       {/* COMMUNITY */}
-      <section className="py-28 px-6 bg-[#0a0a0a]">
+      <section className="py-28 px-6">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-          {/* Copy */}
           <div className="flex flex-col gap-8">
             <div>
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/5 text-white/40 text-xs font-medium w-fit mb-4">
@@ -335,16 +428,15 @@ export default function Home() {
               </p>
             </div>
             <div className="flex flex-col gap-5">
-              <TrustPillar icon="📸" title="Photo Drops" desc="Post WIP shots, healed pieces, and fresh work directly to the artist feed." />
-              <TrustPillar icon="❓" title="Q&A Posts" desc="Ask the community anything — suppliers, techniques, pricing, business advice." />
-              <TrustPillar icon="📣" title="Events & Conventions" desc="Announce upcoming conventions, guest spots, and pop-ups to the entire network." />
-              <TrustPillar icon="📍" title="Local Artist Network" desc="Connect with verified artists in your city — one feed, your whole market." />
+              <TrustPillar icon={Icons.camera} title="Photo Drops" desc="Post WIP shots, healed pieces, and fresh work directly to the artist feed." />
+              <TrustPillar icon={Icons.question} title="Q&A Posts" desc="Ask the community anything — suppliers, techniques, pricing, business advice." />
+              <TrustPillar icon={Icons.megaphone} title="Events & Conventions" desc="Announce upcoming conventions, guest spots, and pop-ups to the entire network." />
+              <TrustPillar icon={Icons.mappin} title="Local Artist Network" desc="Connect with verified artists in your city — one feed, your whole market." />
             </div>
             <div className="p-4 rounded-xl border border-white/8 bg-white/[0.02] text-white/30 text-sm leading-relaxed">
               Visible only to verified InkNow artists. Text posts, photo drops, Q&As, and event announcements — all in one feed.
             </div>
           </div>
-          {/* Phone */}
           <div className="flex justify-center">
             <Phone src={`${BASE}assets/screen-community.jpg`} alt="Artist Community feed" />
           </div>
@@ -352,7 +444,7 @@ export default function Home() {
       </section>
 
       {/* WHY INKNOW */}
-      <section className="py-28 px-6">
+      <section className="py-28 px-6 bg-[#0a0a0a]">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <p className="text-yellow-500/70 text-xs font-bold tracking-[0.25em] uppercase mb-4">Why InkNow</p>
@@ -360,13 +452,15 @@ export default function Home() {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
             {[
-              { icon: "🛡️", title: "In-App Payments Only", desc: "All deposits and balances are processed through InkNow. Cash, Venmo, or Zelle aren't recognized — your money stays protected." },
-              { icon: "✅", title: "Verified Artist Profiles", desc: "Real portfolios, real reviews, real availability. What you see is what you book." },
-              { icon: "💬", title: "Direct Messaging", desc: "Communicate with your artist through the app — every conversation is tied to your booking and protected." },
-              { icon: "🎯", title: "Full Booking Lifecycle", desc: "Consultation → Consent → Deposit → Session → Review. Every step handled in one seamless experience." },
+              { icon: Icons.shield, title: "In-App Payments Only", desc: "All deposits and balances are processed through InkNow. Cash, Venmo, or Zelle aren't recognized — your money stays protected." },
+              { icon: Icons.check, title: "Verified Artist Profiles", desc: "Real portfolios, real reviews, real availability. What you see is what you book." },
+              { icon: Icons.chat, title: "Direct Messaging", desc: "Communicate with your artist through the app — every conversation is tied to your booking and protected." },
+              { icon: Icons.flow, title: "Full Booking Lifecycle", desc: "Consultation → Consent → Deposit → Session → Review. Every step handled in one seamless experience." },
             ].map(p => (
               <div key={p.title} className="p-6 rounded-2xl border border-white/8 bg-white/[0.02] hover:border-yellow-500/20 hover:bg-white/[0.04] transition-all duration-300">
-                <div className="text-3xl mb-4">{p.icon}</div>
+                <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/8 flex items-center justify-center text-white/50 mb-5">
+                  {p.icon}
+                </div>
                 <h3 className="text-white font-bold text-sm mb-2">{p.title}</h3>
                 <p className="text-white/40 text-sm leading-relaxed">{p.desc}</p>
               </div>
@@ -376,7 +470,7 @@ export default function Home() {
       </section>
 
       {/* STYLES STRIP */}
-      <section className="py-12 px-6 border-y border-white/[0.06] overflow-hidden">
+      <section className="py-12 px-6 border-y border-white/[0.06]">
         <div className="max-w-6xl mx-auto">
           <p className="text-center text-white/20 text-xs uppercase tracking-[0.25em] mb-6">Supported tattoo styles</p>
           <div className="flex flex-wrap justify-center gap-2">
