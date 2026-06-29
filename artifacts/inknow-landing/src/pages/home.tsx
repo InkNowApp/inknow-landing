@@ -326,10 +326,10 @@ export default function Home() {
       {/* CLIENT FEATURES */}
       <section id="features" className="py-28 px-6 bg-[#0a0a0a]">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-          <div className="relative flex justify-center items-end gap-4 h-[520px]">
-            <Phone src={`${BASE}assets/screen-consult.jpg`} alt="Request consultation" className="translate-y-8 opacity-70 scale-95" />
-            <Phone src={`${BASE}assets/screen-deposit.jpg`} alt="Pay deposit" className="z-10" />
-            <Phone src={`${BASE}assets/screen-appt.jpg`} alt="Appointment details" className="translate-y-8 opacity-70 scale-95" />
+          <div className="relative flex justify-center items-end gap-3 h-[480px] overflow-hidden rounded-2xl">
+            <Phone src={`${BASE}assets/screen-consult.jpg`} alt="Request consultation" className="translate-y-10 opacity-50 scale-[0.82]" />
+            <Phone src={`${BASE}assets/screen-deposit.jpg`} alt="Pay deposit" className="z-10 scale-[0.92]" />
+            <Phone src={`${BASE}assets/screen-appt.jpg`} alt="Appointment details" className="translate-y-10 opacity-50 scale-[0.82]" />
           </div>
           <div className="flex flex-col gap-8">
             <div>
@@ -382,10 +382,10 @@ export default function Home() {
               </a>
             </div>
           </div>
-          <div className="relative flex justify-center items-end gap-4 h-[520px]">
-            <Phone src={`${BASE}assets/screen-artist-consult.jpg`} alt="Consultation requests" className="translate-y-8 opacity-70 scale-95" />
-            <Phone src={`${BASE}assets/screen-artist-dash.jpg`} alt="Artist dashboard" className="z-10" />
-            <Phone src={`${BASE}assets/screen-availability.jpg`} alt="Availability calendar" className="translate-y-8 opacity-70 scale-95" />
+          <div className="relative flex justify-center items-end gap-3 h-[480px] overflow-hidden rounded-2xl">
+            <Phone src={`${BASE}assets/screen-artist-consult.jpg`} alt="Consultation requests" className="translate-y-10 opacity-50 scale-[0.82]" />
+            <Phone src={`${BASE}assets/screen-artist-dash.jpg`} alt="Artist dashboard" className="z-10 scale-[0.92]" />
+            <Phone src={`${BASE}assets/screen-availability.jpg`} alt="Availability calendar" className="translate-y-10 opacity-50 scale-[0.82]" />
           </div>
         </div>
       </section>
