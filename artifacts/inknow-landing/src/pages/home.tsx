@@ -1,532 +1,410 @@
-import { useState } from "react";
-import { supabase } from "@/lib/supabase";
-
 const BASE = import.meta.env.BASE_URL;
 
-function PhoneMockup({
-  src,
-  alt,
-  className = "",
-}: {
-  src: string;
-  alt: string;
-  className?: string;
-}) {
+function Phone({ src, alt, className = "" }: { src: string; alt: string; className?: string }) {
   return (
-    <div className={`phone-frame w-[200px] h-[430px] md:w-[230px] md:h-[490px] flex-shrink-0 ${className}`}>
-      <img src={src} alt={alt} />
+    <div className={`relative flex-shrink-0 ${className}`} style={{ width: 220, height: 476 }}>
+      <div
+        className="absolute inset-0 rounded-[38px] border border-white/10 bg-[#111] overflow-hidden"
+        style={{ boxShadow: "0 0 0 1px rgba(255,255,255,0.06), 0 40px 80px rgba(0,0,0,0.7)" }}
+      >
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-[22px] bg-[#111] rounded-b-2xl z-10" />
+        <img src={src} alt={alt} className="w-full h-full object-cover object-top" />
+      </div>
     </div>
   );
 }
 
-function FeatureCard({
-  icon,
-  title,
-  description,
-}: {
-  icon: string;
-  title: string;
-  description: string;
-}) {
+function StepCard({ number, icon, title, desc }: { number: string; icon: string; title: string; desc: string }) {
   return (
-    <div className="rounded-2xl border border-white/8 bg-white/4 p-6 flex flex-col gap-3 backdrop-blur-sm hover:border-yellow-500/30 hover:bg-white/6 transition-all duration-300">
+    <div className="flex flex-col gap-4 p-7 rounded-2xl border border-white/8 bg-white/[0.03] hover:border-yellow-500/20 hover:bg-white/[0.05] transition-all duration-300 group">
+      <div className="flex items-center gap-3">
+        <span className="text-yellow-500/60 text-xs font-bold tracking-[0.2em] uppercase">{number}</span>
+        <div className="h-px flex-1 bg-white/8" />
+      </div>
       <div className="text-3xl">{icon}</div>
-      <h3 className="text-white font-semibold text-lg leading-tight">{title}</h3>
-      <p className="text-white/55 text-sm leading-relaxed">{description}</p>
+      <div>
+        <h3 className="text-white font-bold text-lg mb-2">{title}</h3>
+        <p className="text-white/50 text-sm leading-relaxed">{desc}</p>
+      </div>
     </div>
   );
 }
 
-function StatCard({ value, label }: { value: string; label: string }) {
+function TrustPillar({ icon, title, desc }: { icon: string; title: string; desc: string }) {
   return (
-    <div className="flex flex-col items-center gap-1">
-      <span className="gradient-text text-4xl md:text-5xl font-bold tracking-tight">
-        {value}
-      </span>
-      <span className="text-white/50 text-sm uppercase tracking-widest font-medium">
-        {label}
-      </span>
+    <div className="flex gap-4 items-start">
+      <div className="w-10 h-10 rounded-xl bg-yellow-500/10 border border-yellow-500/20 flex items-center justify-center flex-shrink-0 text-lg">
+        {icon}
+      </div>
+      <div>
+        <h4 className="text-white font-semibold text-sm mb-1">{title}</h4>
+        <p className="text-white/45 text-sm leading-relaxed">{desc}</p>
+      </div>
+    </div>
+  );
+}
+
+function ArtistCard({
+  name, location, styles, rating, reviews, price, verified
+}: {
+  name: string; location: string; styles: string[]; rating: number; reviews: number; price: string; verified?: boolean;
+}) {
+  return (
+    <div className="rounded-2xl border border-white/8 bg-[#111] overflow-hidden hover:border-white/16 transition-all duration-300 group">
+      <div className="h-40 bg-gradient-to-br from-white/5 to-white/[0.02] flex items-center justify-center">
+        <div className="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center text-2xl">🎨</div>
+      </div>
+      <div className="p-5">
+        <div className="flex items-start justify-between mb-3">
+          <div>
+            <div className="flex items-center gap-1.5">
+              <span className="text-white font-bold text-base">{name}</span>
+              {verified && <span className="text-[#4A9EFF] text-sm">✓</span>}
+            </div>
+            <span className="text-white/40 text-xs">{location}</span>
+          </div>
+          <span className="text-white/70 text-sm font-medium">{price}</span>
+        </div>
+        <div className="flex items-center gap-1 mb-3">
+          <span className="text-yellow-400 text-xs">★</span>
+          <span className="text-white/70 text-xs font-semibold">{rating}</span>
+          <span className="text-white/30 text-xs">({reviews})</span>
+        </div>
+        <div className="flex flex-wrap gap-1.5">
+          {styles.map(s => (
+            <span key={s} className="px-2.5 py-1 rounded-full bg-white/6 border border-white/8 text-white/50 text-xs">{s}</span>
+          ))}
+        </div>
+        <button className="mt-4 w-full py-2.5 rounded-xl bg-white/6 hover:bg-white/10 border border-white/8 text-white/70 text-sm font-medium transition-all">
+          View Profile
+        </button>
+      </div>
     </div>
   );
 }
 
 export default function Home() {
-  const [email, setEmail] = useState("");
-  const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
-  const [role, setRole] = useState<"client" | "artist">("client");
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!email.trim()) return;
-    setLoading(true);
-    setError("");
-    const { error: sbError } = await supabase
-      .from("waitlist")
-      .insert({ email: email.trim(), role });
-    setLoading(false);
-    if (sbError) {
-      if (sbError.code === "23505") {
-        setError("You're already on the list — we'll reach out when it's time.");
-      } else {
-        setError("Something went wrong. Try again or email us at support@getinknow.com");
-      }
-    } else {
-      setSubmitted(true);
-    }
-  };
-
   return (
     <div className="min-h-screen bg-[#0C0C0C] text-white overflow-x-hidden">
-      <div className="noise-overlay" />
 
-      {/* Nav */}
-      <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 backdrop-blur-xl bg-black/40 border-b border-white/6">
-        <img
-          src={`${BASE}assets/logo.png`}
-          alt="InkNow"
-          className="h-16 w-auto object-contain mix-blend-screen brightness-200"
-        />
-        <a
-          href="#waitlist"
-          className="text-sm font-semibold bg-yellow-500 text-black px-5 py-2 rounded-full hover:bg-yellow-400 transition-colors duration-200"
-        >
-          Join Waitlist
+      {/* NAV */}
+      <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 border-b border-white/[0.06] bg-[#0C0C0C]/90 backdrop-blur-xl">
+        <a href={BASE}>
+          <img src={`${BASE}assets/logo.png`} alt="InkNow" className="h-12 w-auto object-contain mix-blend-screen brightness-200" />
         </a>
+        <div className="hidden md:flex items-center gap-8 text-sm text-white/50">
+          <a href="#how-it-works" className="hover:text-white transition-colors">How It Works</a>
+          <a href="#for-artists" className="hover:text-white transition-colors">For Artists</a>
+          <a href="#features" className="hover:text-white transition-colors">Features</a>
+        </div>
+        <div className="flex items-center gap-3">
+          <a href="#for-artists" className="hidden md:block text-sm text-white/60 hover:text-white transition-colors px-4 py-2">
+            Artist Sign-Up
+          </a>
+          <a
+            href="https://apps.apple.com"
+            className="px-5 py-2.5 rounded-full bg-yellow-500 hover:bg-yellow-400 text-black text-sm font-bold transition-all duration-200 shadow-lg shadow-yellow-500/20"
+          >
+            Download App
+          </a>
+        </div>
       </nav>
 
-      {/* Hero */}
-      <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 px-6 text-center overflow-hidden">
-        <div className="section-glow top-0 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+      {/* HERO */}
+      <section className="relative min-h-screen flex items-center pt-24 pb-16 px-6 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-radial from-yellow-500/5 via-transparent to-transparent" style={{ background: "radial-gradient(ellipse 60% 50% at 65% 50%, rgba(201,168,76,0.07) 0%, transparent 70%)" }} />
+        <div className="absolute top-1/4 right-0 w-96 h-96 rounded-full bg-yellow-500/4 blur-[120px] pointer-events-none" />
 
-        <div className="max-w-4xl mx-auto relative z-10">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-yellow-500/30 bg-yellow-500/8 text-yellow-400 text-sm font-medium mb-8 animate-fade-in-up">
-            <span className="w-2 h-2 rounded-full bg-yellow-400 animate-pulse" />
-            Coming Soon — Get Early Access
-          </div>
+        <div className="max-w-7xl mx-auto w-full grid md:grid-cols-2 gap-12 items-center">
+          {/* Left: Copy */}
+          <div className="flex flex-col gap-6 z-10">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-yellow-500/20 bg-yellow-500/5 text-yellow-400 text-xs font-medium w-fit">
+              <span className="w-1.5 h-1.5 rounded-full bg-yellow-400 animate-pulse" />
+              Now available across all 50 states
+            </div>
 
-          <div className="flex justify-center mb-8 animate-fade-in-up-delay-1">
-            <img
-              src={`${BASE}assets/logo.png`}
-              alt="InkNow"
-              className="h-44 md:h-64 w-auto object-contain mix-blend-screen brightness-200"
-            />
-          </div>
+            <div>
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-black leading-[0.95] tracking-tight">
+                Book Tattoos<br />
+                <span className="text-yellow-400">Smarter.</span>
+              </h1>
+              <p className="mt-2 text-xl md:text-2xl text-white/30 font-light tracking-wide">
+                The Future of Tattoo Booking.
+              </p>
+            </div>
 
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight tracking-tight mb-6 animate-fade-in-up-delay-1">
-            The New Way Artists
-            <br />
-            <span className="gradient-text">and Clients Connect.</span>
-          </h1>
-
-          <p className="text-lg md:text-xl text-white/60 max-w-2xl mx-auto leading-relaxed mb-10 animate-fade-in-up-delay-2">
-            Clients can't find the right artist. Artists can't find serious clients.{" "}
-            <span className="text-white/90 font-medium">InkNow fixes both.</span>
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up-delay-3">
-            <a
-              href="#waitlist"
-              className="glow-button inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-yellow-500 text-black font-bold text-base hover:bg-yellow-400 transition-colors duration-200"
-            >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M12 2L2 7l10 5 10-5-10-5z" />
-                <path d="M2 17l10 5 10-5" />
-                <path d="M2 12l10 5 10-5" />
-              </svg>
-              Join the Waitlist
-            </a>
-            <a
-              href="#features"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full border border-white/15 text-white font-semibold text-base hover:border-white/30 hover:bg-white/5 transition-all duration-200"
-            >
-              See How It Works
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg>
-            </a>
-          </div>
-        </div>
-
-        {/* Hero phones */}
-        <div className="relative mt-16 md:mt-20 flex justify-center items-end gap-4 md:gap-8 px-4">
-          <div className="float-phone opacity-70 hidden md:block">
-            <PhoneMockup src={`${BASE}assets/screen-earnings.png`} alt="Earnings Dashboard" />
-          </div>
-          <div className="float-phone-2 z-10">
-            <PhoneMockup
-              src={`${BASE}assets/screen-discover.png`}
-              alt="Discover Artists"
-              className="!w-[220px] !h-[470px] md:!w-[260px] md:!h-[560px]"
-            />
-          </div>
-          <div className="float-phone-3 opacity-70 hidden md:block">
-            <PhoneMockup src={`${BASE}assets/screen-explore.png`} alt="Explore Page" />
-          </div>
-        </div>
-
-        <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#0C0C0C] to-transparent pointer-events-none" />
-      </section>
-
-      {/* Stats bar */}
-      <section className="py-14 px-6 border-y border-white/6 bg-white/2">
-        <div className="max-w-3xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-          <StatCard value="50+" label="Cities" />
-          <StatCard value="Top 50" label="Weekly Rankings" />
-          <StatCard value="0%" label="No-Show Rate" />
-          <StatCard value="100%" label="Artist Verified" />
-        </div>
-      </section>
-
-      {/* Problem / Solution */}
-      <section id="features" className="py-24 px-6 relative">
-        <div className="section-glow -left-64 top-1/2 -translate-y-1/2" />
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-16">
-            <p className="text-yellow-500 text-sm font-semibold uppercase tracking-widest mb-4">
-              The Problem
+            <p className="text-white/55 text-lg leading-relaxed max-w-md">
+              Discover artists, explore real portfolios, and book confidently — consultations, deposits, and payments all in one place.
             </p>
-            <h2 className="text-3xl md:text-5xl font-black tracking-tight leading-tight mb-6">
-              The tattoo world is broken.
-              <br />
-              <span className="text-white/40">We're here to fix it.</span>
-            </h2>
-            <p className="text-white/55 max-w-2xl mx-auto text-lg leading-relaxed">
-              Discovery is broken. Trust is missing. Artists lose money to ghost clients. Clients waste time finding the right fit. InkNow was built to solve all of it — at once.
-            </p>
+
+            <div className="flex flex-col sm:flex-row gap-3 mt-2">
+              <a
+                href="https://apps.apple.com"
+                className="flex items-center justify-center gap-2.5 px-7 py-4 rounded-2xl bg-yellow-500 hover:bg-yellow-400 text-black font-bold text-base transition-all duration-200 shadow-xl shadow-yellow-500/25 hover:shadow-yellow-500/40 hover:-translate-y-0.5"
+              >
+                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                Download on iOS
+              </a>
+              <a
+                href="#for-artists"
+                className="flex items-center justify-center gap-2 px-7 py-4 rounded-2xl border border-white/10 bg-white/[0.04] hover:bg-white/[0.08] text-white font-semibold text-base transition-all duration-200 hover:-translate-y-0.5"
+              >
+                Artist Sign-Up
+                <svg className="w-4 h-4 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+              </a>
+            </div>
+
+            {/* Micro trust signals */}
+            <div className="flex items-center gap-6 mt-2 text-white/30 text-xs">
+              <div className="flex items-center gap-1.5">
+                <svg className="w-3.5 h-3.5 text-yellow-500/60" fill="currentColor" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                Secure payments
+              </div>
+              <div className="flex items-center gap-1.5">
+                <svg className="w-3.5 h-3.5 text-yellow-500/60" fill="currentColor" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                Verified artists
+              </div>
+              <div className="flex items-center gap-1.5">
+                <svg className="w-3.5 h-3.5 text-yellow-500/60" fill="currentColor" viewBox="0 0 24 24"><path d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
+                Free for clients
+              </div>
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <FeatureCard
-              icon="🔍"
-              title="Find Your Artist"
-              description="Browse real portfolios filtered by style, location, and availability. No scrolling through Instagram hoping for the best — get matched with artists who actually fit your vision."
+          {/* Right: Phone mockups */}
+          <div className="relative flex justify-center items-center h-[520px] z-10">
+            <Phone
+              src={`${BASE}assets/screen-profile.jpg`}
+              alt="Artist profile"
+              className="absolute left-0 top-8 opacity-60 scale-90"
             />
-            <FeatureCard
-              icon="📅"
-              title="Book With Confidence"
-              description="See live availability, pay deposits directly in-app, and get reminders that keep both sides accountable. No more DM tag and ghost."
+            <Phone
+              src={`${BASE}assets/screen-discover.jpg`}
+              alt="Discover artists"
+              className="relative z-10 shadow-2xl"
             />
-            <FeatureCard
-              icon="⭐"
-              title="Verified Reviews"
-              description="Every review is from a real booking. Artists earn a Reliability Score based on actual performance — not follower count or hype."
-            />
-            <FeatureCard
-              icon="💰"
-              title="Artist Earnings Tools"
-              description="Track income, manage scheduled payouts, see what's pending and what's landing — all from a clean dashboard built specifically for tattoo artists."
-            />
-            <FeatureCard
-              icon="🏆"
-              title="Top 50 Rankings"
-              description="Every city has a Top 50 list that resets weekly. Rise through the ranks based on bookings and reviews — not how many people you know."
-            />
-            <FeatureCard
-              icon="🗺️"
-              title="Radius & City Discovery"
-              description="Scroll artists near you or browse curated picks city by city. An algorithm that surfaces the right talent at the right time — for both flash and custom work."
+            <Phone
+              src={`${BASE}assets/screen-explore.jpg`}
+              alt="Explore styles"
+              className="absolute right-0 top-8 opacity-60 scale-90"
             />
           </div>
         </div>
       </section>
 
-      {/* Sneak Peek Screenshots */}
-      <section className="py-24 px-6 relative overflow-hidden">
-        <div className="section-glow right-0 top-1/2 -translate-y-1/2 translate-x-1/2" />
+      {/* STATS */}
+      <section className="border-y border-white/[0.06] py-12 px-6">
+        <div className="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          {[
+            { value: "50", label: "States" },
+            { value: "Top 50", label: "City Rankings" },
+            { value: "100%", label: "In-App Payments" },
+            { value: "Free", label: "For Clients" },
+          ].map(({ value, label }) => (
+            <div key={label} className="flex flex-col gap-1">
+              <span className="text-3xl font-black text-yellow-400">{value}</span>
+              <span className="text-white/35 text-xs uppercase tracking-widest">{label}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* HOW IT WORKS */}
+      <section id="how-it-works" className="py-28 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <p className="text-yellow-500 text-sm font-semibold uppercase tracking-widest mb-4">
-              Sneak Peek
-            </p>
-            <h2 className="text-3xl md:text-5xl font-black tracking-tight mb-6">
-              Built different.
-              <br />
-              <span className="gradient-text">Looks different too.</span>
-            </h2>
-            <p className="text-white/55 max-w-xl mx-auto text-lg">
-              Every screen was designed to feel premium, fast, and culture-native — like it belongs in your hand.
-            </p>
+            <p className="text-yellow-500/70 text-xs font-bold tracking-[0.25em] uppercase mb-4">How It Works</p>
+            <h2 className="text-4xl md:text-5xl font-black">Simple from start to session.</h2>
+            <p className="text-white/40 text-lg mt-4 max-w-md mx-auto">Three steps between you and the tattoo you've been thinking about.</p>
           </div>
-
-          {/* Screenshot rows */}
-          <div className="space-y-24">
-            {/* Row 1 - Discover */}
-            <div className="flex flex-col md:flex-row items-center gap-10 md:gap-16">
-              <div className="flex-1 order-2 md:order-1">
-                <p className="text-yellow-500 text-xs font-bold uppercase tracking-widest mb-3">
-                  Discover
-                </p>
-                <h3 className="text-2xl md:text-3xl font-black mb-4 leading-tight">
-                  Scroll artists near and far — your next ink is a swipe away.
-                </h3>
-                <p className="text-white/55 leading-relaxed">
-                  Filter by radius, style, and availability. Whether you're looking for someone around the corner or willing to travel for the right piece — InkNow surfaces the best options with transparent pricing and real next-available dates. No guessing. No DMing into the void.
-                </p>
-                <div className="mt-6 flex flex-wrap gap-2">
-                  {["Radius Filter", "Live Availability", "Deposits", "Nearby Artists"].map((tag) => (
-                    <span key={tag} className="px-3 py-1 rounded-full text-xs font-medium bg-yellow-500/10 text-yellow-400 border border-yellow-500/20">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-              <div className="order-1 md:order-2 float-phone-2">
-                <PhoneMockup
-                  src={`${BASE}assets/screen-discover.png`}
-                  alt="Discover Artists"
-                  className="!w-[220px] !h-[470px]"
-                />
-              </div>
-            </div>
-
-            {/* Row 2 - Explore */}
-            <div className="flex flex-col md:flex-row items-center gap-10 md:gap-16">
-              <div className="float-phone">
-                <PhoneMockup
-                  src={`${BASE}assets/screen-explore.png`}
-                  alt="Explore Page"
-                  className="!w-[220px] !h-[470px]"
-                />
-              </div>
-              <div className="flex-1">
-                <p className="text-yellow-500 text-xs font-bold uppercase tracking-widest mb-3">
-                  Explore
-                </p>
-                <h3 className="text-2xl md:text-3xl font-black mb-4 leading-tight">
-                  An algorithm built for the culture — not the algorithm.
-                </h3>
-                <p className="text-white/55 leading-relaxed">
-                  The Explore feed surfaces trending artists and fresh portfolio drops based on what you actually care about — style, vibe, and city. Plus, every major city has its own Top 50 ranking that resets weekly, so the best artists always have a path to shine.
-                </p>
-                <div className="mt-6 flex flex-wrap gap-2">
-                  {["Style-Based Feed", "City Top 50", "Weekly Rankings", "Trending Artists"].map((tag) => (
-                    <span key={tag} className="px-3 py-1 rounded-full text-xs font-medium bg-yellow-500/10 text-yellow-400 border border-yellow-500/20">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Row 3 - Profile */}
-            <div className="flex flex-col md:flex-row items-center gap-10 md:gap-16">
-              <div className="flex-1 order-2 md:order-1">
-                <p className="text-yellow-500 text-xs font-bold uppercase tracking-widest mb-3">
-                  Artist Profile
-                </p>
-                <h3 className="text-2xl md:text-3xl font-black mb-4 leading-tight">
-                  Real portfolios. Real reviews. Real results.
-                </h3>
-                <p className="text-white/55 leading-relaxed">
-                  Every artist profile shows verified work, honest client reviews, and a Reliability Score earned through actual bookings — not clout. Clients know exactly who they're booking before they ever step through the door.
-                </p>
-                <div className="mt-6 flex flex-wrap gap-2">
-                  {["Reliability Score", "Verified Reviews", "Portfolio", "Social Links"].map((tag) => (
-                    <span key={tag} className="px-3 py-1 rounded-full text-xs font-medium bg-yellow-500/10 text-yellow-400 border border-yellow-500/20">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-              <div className="order-1 md:order-2 float-phone-3">
-                <PhoneMockup
-                  src={`${BASE}assets/screen-profile.png`}
-                  alt="Artist Profile"
-                  className="!w-[220px] !h-[470px]"
-                />
-              </div>
-            </div>
-
-            {/* Row 4 - Earnings */}
-            <div className="flex flex-col md:flex-row items-center gap-10 md:gap-16">
-              <div className="float-phone-2">
-                <PhoneMockup
-                  src={`${BASE}assets/screen-earnings.png`}
-                  alt="Earnings Dashboard"
-                  className="!w-[220px] !h-[470px]"
-                />
-              </div>
-              <div className="flex-1">
-                <p className="text-yellow-500 text-xs font-bold uppercase tracking-widest mb-3">
-                  Earnings Dashboard
-                </p>
-                <h3 className="text-2xl md:text-3xl font-black mb-4 leading-tight">
-                  Stop guessing. Start growing your business.
-                </h3>
-                <p className="text-white/55 leading-relaxed">
-                  Artists get a full breakdown of total earnings, upcoming payouts, and deposit history — all in one place. Know what's coming in, when it lands, and which clients are coming back. Built for artists who take their craft seriously.
-                </p>
-                <div className="mt-6 flex flex-wrap gap-2">
-                  {["Payout Tracking", "Deposit History", "Income Reports", "Scheduled Payouts"].map((tag) => (
-                    <span key={tag} className="px-3 py-1 rounded-full text-xs font-medium bg-yellow-500/10 text-yellow-400 border border-yellow-500/20">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
+          <div className="grid md:grid-cols-3 gap-4">
+            <StepCard number="01" icon="🔍" title="Find Your Artist" desc="Browse verified portfolios by style, location, and availability. Filter by Realism, Blackwork, Fine Line, Watercolor, and more." />
+            <StepCard number="02" icon="📋" title="Book Securely" desc="Send a consultation request with reference photos. Once approved, sign your consent form and pay your deposit — all in-app." />
+            <StepCard number="03" icon="✨" title="Get Inked" desc="Show up confident. Track your booking, message your artist, pay the session balance, and leave a review when you're done." />
           </div>
         </div>
       </section>
 
-      {/* For Artists / For Clients split */}
-      <section className="py-24 px-6 border-t border-white/6">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-5xl font-black tracking-tight mb-4">
-              Built for both sides.
-            </h2>
-            <p className="text-white/50 text-lg">
-              Every feature was designed with artists and clients in mind.
-            </p>
+      {/* CLIENT FEATURES */}
+      <section id="features" className="py-28 px-6 bg-[#0a0a0a]">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+          {/* Phones */}
+          <div className="relative flex justify-center items-end gap-4 h-[520px]">
+            <Phone src={`${BASE}assets/screen-consult.jpg`} alt="Request consultation" className="translate-y-8 opacity-70 scale-95" />
+            <Phone src={`${BASE}assets/screen-deposit.jpg`} alt="Pay deposit" className="z-10" />
+            <Phone src={`${BASE}assets/screen-appt.jpg`} alt="Appointment details" className="translate-y-8 opacity-70 scale-95" />
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="rounded-3xl border border-white/8 bg-gradient-to-b from-white/5 to-white/2 p-8">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-yellow-500/15 text-yellow-400 text-sm font-semibold mb-6 border border-yellow-500/25">
-                <span>🎨</span> For Artists
-              </div>
-              <ul className="space-y-4">
-                {[
-                  "Get booked by clients who actually show up",
-                  "Earn a Reliability Score that builds trust",
-                  "Manage your full schedule and availability",
-                  "Track earnings, deposits, and upcoming payouts",
-                  "Climb your city's weekly Top 50 ranking",
-                  "Reach new clients without the social media grind",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-3 text-white/75">
-                    <svg className="w-5 h-5 text-yellow-400 mt-0.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M20 6L9 17l-5-5" />
-                    </svg>
-                    <span className="text-sm leading-relaxed">{item}</span>
-                  </li>
-                ))}
-              </ul>
+          {/* Copy */}
+          <div className="flex flex-col gap-8">
+            <div>
+              <p className="text-yellow-500/70 text-xs font-bold tracking-[0.25em] uppercase mb-4">For Clients</p>
+              <h2 className="text-4xl md:text-5xl font-black leading-tight">Everything you need to book right.</h2>
+              <p className="text-white/45 text-lg mt-4 leading-relaxed">From discovery to aftercare, InkNow keeps your entire tattoo journey in one place.</p>
             </div>
-
-            <div className="rounded-3xl border border-white/8 bg-gradient-to-b from-white/5 to-white/2 p-8">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-yellow-500/15 text-yellow-400 text-sm font-semibold mb-6 border border-yellow-500/25">
-                <span>💉</span> For Clients
-              </div>
-              <ul className="space-y-4">
-                {[
-                  "Find artists by style, vibe, and location",
-                  "See real portfolios before you commit",
-                  "Book and pay deposits securely in-app",
-                  "Read verified reviews from real clients",
-                  "Never waste time chasing unresponsive artists",
-                  "Get reminders so you never miss your appointment",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-3 text-white/75">
-                    <svg className="w-5 h-5 text-yellow-400 mt-0.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M20 6L9 17l-5-5" />
-                    </svg>
-                    <span className="text-sm leading-relaxed">{item}</span>
-                  </li>
-                ))}
-              </ul>
+            <div className="flex flex-col gap-5">
+              <TrustPillar icon="🎨" title="Browse by Style" desc="Traditional, Realism, Blackwork, Fine Line, Watercolor, Japanese, and more — filter by what you love." />
+              <TrustPillar icon="💬" title="Consultation First" desc="Send a request with your reference photos and vision. Artists review and respond — no cold DMs." />
+              <TrustPillar icon="🔒" title="Secure Deposits" desc="Lock in your appointment with a deposit processed through InkNow. Your money is protected." />
+              <TrustPillar icon="📅" title="Track Everything" desc="Active bookings, past sessions, and canceled appointments all organized in one place." />
+              <TrustPillar icon="⭐" title="Rate & Follow" desc="Leave honest reviews and follow your favorite artists to stay up to date on availability." />
             </div>
+            <a
+              href="https://apps.apple.com"
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl bg-yellow-500 hover:bg-yellow-400 text-black font-bold text-sm transition-all w-fit shadow-lg shadow-yellow-500/20"
+            >
+              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+              Get InkNow Free
+            </a>
           </div>
         </div>
       </section>
 
-      {/* Waitlist CTA */}
-      <section id="waitlist" className="py-28 px-6 relative overflow-hidden">
-        <div className="section-glow left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" style={{ width: 800, height: 800 }} />
-        <div className="max-w-2xl mx-auto text-center relative z-10">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-yellow-500/30 bg-yellow-500/8 text-yellow-400 text-sm font-medium mb-8">
-            <span>🔥</span> Early Access — Limited Spots
+      {/* ARTIST FEATURES */}
+      <section id="for-artists" className="py-28 px-6">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+          {/* Copy */}
+          <div className="flex flex-col gap-8">
+            <div>
+              <p className="text-yellow-500/70 text-xs font-bold tracking-[0.25em] uppercase mb-4">For Artists</p>
+              <h2 className="text-4xl md:text-5xl font-black leading-tight">Run your books like a pro.</h2>
+              <p className="text-white/45 text-lg mt-4 leading-relaxed">Manage your full booking lifecycle without chasing clients over DMs. InkNow handles it.</p>
+            </div>
+            <div className="flex flex-col gap-5">
+              <TrustPillar icon="📁" title="Portfolio That Converts" desc="Showcase your work with style, size, and placement tags. Clients find you by what they actually want." />
+              <TrustPillar icon="📆" title="Availability Calendar" desc="Set your weekly schedule, block days off, and add special openings. Clients only see when you're open." />
+              <TrustPillar icon="💰" title="Get Paid via Stripe" desc="Deposits and balances hit your Stripe account directly. No invoice chasing, no cash awkwardness." />
+              <TrustPillar icon="📣" title="Blast Messages" desc="Send updates or promos to your entire client list in one tap. Stay top of mind." />
+              <TrustPillar icon="🏆" title="Top 50 City Rankings" desc="Rank in your city's weekly leaderboard. More visibility, more serious clients." />
+            </div>
+            <div className="flex flex-col gap-3 p-5 rounded-2xl border border-yellow-500/20 bg-yellow-500/5">
+              <div className="flex items-center gap-2">
+                <span className="text-yellow-400 font-bold text-sm">InkNow PRO</span>
+                <span className="px-2 py-0.5 rounded-full bg-yellow-500/20 text-yellow-400 text-xs font-medium">30-day free trial</span>
+              </div>
+              <p className="text-white/50 text-sm leading-relaxed">Portfolio watermarking, PRO analytics dashboard, priority ranking boost, and monthly boost credits.</p>
+              <a href="https://apps.apple.com" className="text-yellow-400 text-sm font-semibold hover:text-yellow-300 transition-colors">
+                Start free trial →
+              </a>
+            </div>
           </div>
+          {/* Phones */}
+          <div className="relative flex justify-center items-end gap-4 h-[520px]">
+            <Phone src={`${BASE}assets/screen-artist-consult.jpg`} alt="Consultation requests" className="translate-y-8 opacity-70 scale-95" />
+            <Phone src={`${BASE}assets/screen-artist-dash.jpg`} alt="Artist dashboard" className="z-10" />
+            <Phone src={`${BASE}assets/screen-availability.jpg`} alt="Availability calendar" className="translate-y-8 opacity-70 scale-95" />
+          </div>
+        </div>
+      </section>
 
-          <h2 className="text-4xl md:text-6xl font-black tracking-tight mb-6 leading-tight">
-            Be first when
-            <br />
-            <span className="gradient-text">InkNow drops.</span>
+      {/* ARTIST CARDS */}
+      <section className="py-28 px-6 bg-[#0a0a0a]">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <p className="text-yellow-500/70 text-xs font-bold tracking-[0.25em] uppercase mb-4">The Network</p>
+            <h2 className="text-4xl md:text-5xl font-black">Artists worth booking.</h2>
+            <p className="text-white/40 text-lg mt-4 max-w-sm mx-auto">Verified portfolios. Real ratings. Every style, every city.</p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-5">
+            <ArtistCard name="TatsByTut" location="Ink District · Warren, OH" styles={["Realism", "Blackwork", "Piercing"]} rating={4.8} reviews={32} price="Contact for pricing" verified />
+            <ArtistCard name="InkByJay" location="Independent · Atlanta, GA" styles={["Fine Line", "Geometric", "Minimalist"]} rating={5.0} reviews={12} price="$120/hr" verified />
+            <ArtistCard name="TatGurl" location="Studio 7 · Austin, TX" styles={["Traditional", "Watercolor", "Piercing"]} rating={5.0} reviews={8} price="$95/hr" verified />
+          </div>
+          <div className="text-center mt-10">
+            <a href="https://apps.apple.com" className="inline-flex items-center gap-2 text-white/40 hover:text-white/70 text-sm transition-colors">
+              Browse all artists in the app
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5l7 7-7 7" /></svg>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* WHY INKNOW */}
+      <section className="py-28 px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <p className="text-yellow-500/70 text-xs font-bold tracking-[0.25em] uppercase mb-4">Why InkNow</p>
+            <h2 className="text-4xl md:text-5xl font-black">Built for trust.<br />Designed for results.</h2>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+            {[
+              { icon: "🛡️", title: "In-App Payments Only", desc: "All deposits and balances are processed through InkNow. Cash, Venmo, or Zelle aren't recognized — your money stays protected." },
+              { icon: "✅", title: "Verified Artist Profiles", desc: "Real portfolios, real reviews, real availability. What you see is what you book." },
+              { icon: "💬", title: "Direct Messaging", desc: "Communicate with your artist through the app — every conversation is tied to your booking and protected." },
+              { icon: "🎯", title: "Full Booking Lifecycle", desc: "Consultation → Consent → Deposit → Session → Review. Every step handled in one seamless experience." },
+            ].map(p => (
+              <div key={p.title} className="p-6 rounded-2xl border border-white/8 bg-white/[0.02] hover:border-yellow-500/20 hover:bg-white/[0.04] transition-all duration-300">
+                <div className="text-3xl mb-4">{p.icon}</div>
+                <h3 className="text-white font-bold text-sm mb-2">{p.title}</h3>
+                <p className="text-white/40 text-sm leading-relaxed">{p.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* STYLES STRIP */}
+      <section className="py-12 px-6 border-y border-white/[0.06] overflow-hidden">
+        <div className="max-w-6xl mx-auto">
+          <p className="text-center text-white/20 text-xs uppercase tracking-[0.25em] mb-6">Supported tattoo styles</p>
+          <div className="flex flex-wrap justify-center gap-2">
+            {["Traditional","Realism","Blackwork","Fine Line","Watercolor","Japanese","Neo-Traditional","Geometric","Minimalist","Portrait","Tribal","Lettering","Anime","Illustrative","Surrealism"].map(s => (
+              <span key={s} className="px-4 py-2 rounded-full border border-white/8 text-white/30 text-xs hover:border-white/16 hover:text-white/50 transition-all cursor-default">{s}</span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA BANNER */}
+      <section className="py-28 px-6">
+        <div className="max-w-3xl mx-auto text-center">
+          <img src={`${BASE}assets/logo.png`} alt="InkNow" className="h-20 w-auto object-contain mix-blend-screen brightness-200 mx-auto mb-8" />
+          <h2 className="text-5xl md:text-6xl font-black mb-4">
+            The new way artists<br />and clients connect.
           </h2>
-          <p className="text-white/55 text-lg mb-10 leading-relaxed">
-            The tattoo industry is overdue for something real. Join the waitlist and be among the first artists and clients to experience InkNow when we launch.
+          <p className="text-white/40 text-lg mb-10 leading-relaxed">
+            Transparency, trust, and simplicity — for everyone in the tattoo and piercing world.
           </p>
-
-          {/* Role toggle */}
-          <div className="flex justify-center mb-6">
-            <div className="inline-flex p-1 rounded-full bg-white/6 border border-white/10">
-              <button
-                onClick={() => setRole("client")}
-                className={`px-5 py-2 rounded-full text-sm font-semibold transition-all duration-200 ${
-                  role === "client"
-                    ? "bg-yellow-500 text-black"
-                    : "text-white/50 hover:text-white/80"
-                }`}
-              >
-                I'm a Client
-              </button>
-              <button
-                onClick={() => setRole("artist")}
-                className={`px-5 py-2 rounded-full text-sm font-semibold transition-all duration-200 ${
-                  role === "artist"
-                    ? "bg-yellow-500 text-black"
-                    : "text-white/50 hover:text-white/80"
-                }`}
-              >
-                I'm an Artist
-              </button>
-            </div>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <a
+              href="https://apps.apple.com"
+              className="flex items-center justify-center gap-2.5 px-8 py-4 rounded-2xl bg-yellow-500 hover:bg-yellow-400 text-black font-bold text-base transition-all duration-200 shadow-xl shadow-yellow-500/20 hover:shadow-yellow-500/40 hover:-translate-y-0.5"
+            >
+              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+              Download on iOS — Free
+            </a>
+            <a
+              href="#for-artists"
+              className="flex items-center justify-center px-8 py-4 rounded-2xl border border-white/10 bg-white/[0.04] hover:bg-white/[0.08] text-white font-semibold text-base transition-all duration-200 hover:-translate-y-0.5"
+            >
+              I'm an Artist
+            </a>
           </div>
-
-          {!submitted ? (
-            <>
-              <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder={role === "artist" ? "Enter your artist email..." : "Enter your email..."}
-                  required
-                  disabled={loading}
-                  className="flex-1 px-5 py-4 rounded-full bg-white/8 border border-white/15 text-white placeholder-white/35 text-sm outline-none focus:border-yellow-500/60 focus:bg-white/10 transition-all duration-200 disabled:opacity-60"
-                />
-                <button
-                  type="submit"
-                  disabled={loading}
-                  className="glow-button px-6 py-4 rounded-full bg-yellow-500 text-black font-bold text-sm hover:bg-yellow-400 transition-colors duration-200 whitespace-nowrap disabled:opacity-60"
-                >
-                  {loading ? "Saving..." : "Notify Me"}
-                </button>
-              </form>
-              {error && (
-                <p className="text-white/50 text-sm mt-3">{error}</p>
-              )}
-            </>
-          ) : (
-            <div className="max-w-md mx-auto px-6 py-5 rounded-2xl bg-yellow-500/10 border border-yellow-500/30 text-yellow-400 font-semibold">
-              🎉 You're on the list{role === "artist" ? " as an artist" : ""}! We'll hit you up when InkNow drops.
-            </div>
-          )}
-
-          <p className="text-white/25 text-xs mt-5">
-            No spam. Just the launch announcement when it's time.
-          </p>
+          <p className="text-white/20 text-xs mt-6">Available on iOS · Android coming soon</p>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="border-t border-white/6 py-12 px-6">
-        <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-          <img
-            src={`${BASE}assets/logo.png`}
-            alt="InkNow"
-            className="h-20 w-auto object-contain mix-blend-screen brightness-200"
-          />
-          <p className="text-white/25 text-sm text-center">
-            © 2026 InkNow. All rights reserved. Built for the culture.
-          </p>
-          <div className="flex items-center gap-5 text-white/30 text-sm">
-            <a href={`${BASE}privacy`} className="hover:text-white/60 transition-colors">Privacy</a>
-            <a href={`${BASE}terms`} className="hover:text-white/60 transition-colors">Terms</a>
-            <a href={`${BASE}contact`} className="hover:text-white/60 transition-colors">Contact</a>
+      {/* FOOTER */}
+      <footer className="border-t border-white/[0.06] py-12 px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-8 mb-10">
+            <img src={`${BASE}assets/logo.png`} alt="InkNow" className="h-10 w-auto object-contain mix-blend-screen brightness-200" />
+            <div className="flex items-center gap-6 text-white/30 text-sm">
+              <a href={`${BASE}privacy`} className="hover:text-white/60 transition-colors">Privacy</a>
+              <a href={`${BASE}terms`} className="hover:text-white/60 transition-colors">Terms</a>
+              <a href={`${BASE}contact`} className="hover:text-white/60 transition-colors">Support</a>
+            </div>
+            <div className="flex items-center gap-4">
+              <a href="https://instagram.com/getinknow" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center text-white/30 hover:text-white/60 hover:border-white/20 transition-all">
+                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+              </a>
+              <a href="https://tiktok.com/@getinknow" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center text-white/30 hover:text-white/60 hover:border-white/20 transition-all">
+                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg>
+              </a>
+            </div>
+          </div>
+          <div className="border-t border-white/[0.06] pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-white/20 text-xs">
+            <p>© 2026 InkNow LLC. All rights reserved.</p>
+            <p>Available nationwide across all 50 states.</p>
           </div>
         </div>
       </footer>

@@ -1,0 +1,177 @@
+Redesign the entire InkNow website into a full product website that clearly explains the app, its features, and its value for both artists and clients. The site should feel premium, modern, and culture‑driven — like a real tech startup launching a marketplace app.
+
+I will provide screenshots of the following app pages:
+
+Discover Page
+
+Artist Profile
+
+Consultation Flow
+
+Explore Page
+
+Booked Appointments
+
+Use these screenshots throughout the site as visual examples of how the app works.
+
+Overall Style & Vibe
+Dark, premium, tattoo‑culture aesthetic
+
+Clean spacing, rounded UI elements, smooth animations
+
+Modern startup feel (think: Apple product pages + culture‑driven design)
+
+Mobile‑first responsive layout
+
+Use the InkNow logo at the top
+
+No waitlist — this is now a full product explanation site
+
+Page Structure & Required Sections
+1. Hero Section
+Large headline: “InkNow — The New Way Artists and Clients Connect.”
+
+Subheadline: “A marketplace built for discovery, trust, and real bookings.”
+
+Short paragraph explaining the mission:
+
+Clients struggle to find the right artist
+
+Artists struggle to find serious clients
+
+InkNow solves both with discovery tools, portfolios, messaging, deposits, and reliability scores
+
+Add a clean hero mockup using one of the screenshots
+
+2. What InkNow Is (App Overview)
+Explain the app in simple, hype‑driven language:
+
+A marketplace for tattoo artists and clients
+
+Browse artists by style, location, and portfolio
+
+Book consultations and appointments
+
+Artists manage bookings, deposits, messages, and earnings
+
+Built for trust, transparency, and real connections
+
+3. For Clients (Benefits Section)
+Explain how clients use the app:
+
+Discover artists by style, vibe, and real portfolios
+
+View verified profiles and ratings
+
+Book consultations directly in the app
+
+See availability and pricing
+
+Message artists securely
+
+Reduce no‑shows with deposit system
+
+Use screenshots (Explore, Discover, Consultation Flow) as visual examples.
+
+4. For Artists (Benefits Section)
+Explain how artists use the app:
+
+Get discovered by serious clients
+
+Showcase portfolio, styles, and shop info
+
+Manage bookings and consultations
+
+Accept deposits and track earnings
+
+Reliability score helps filter out flaky clients
+
+Built‑in messaging and scheduling tools
+
+Use screenshots (Artist Profile, Booked Appointments, Earnings if available).
+
+5. How It Works (Step‑By‑Step Flow)
+Create a simple 3–5 step flow for both sides:
+
+Clients:
+
+Browse artists
+
+View profiles
+
+Book consultation
+
+Approve design + pay deposit
+
+Get tattooed
+
+Artists:
+
+Create profile
+
+Upload portfolio
+
+Receive requests
+
+Manage bookings
+
+Get paid
+
+Use screenshots to visually support each step.
+
+6. App Preview Gallery
+Create a clean, premium gallery section titled “Inside the InkNow App”  
+Show the screenshots in mobile mockups with captions:
+
+Discover Page — Trending artists & curated picks
+
+Explore Page — Find artists by style
+
+Artist Profile — Real portfolios & reviews
+
+Consultation Flow — Smooth booking experience
+
+Booked Appointments — Organized schedule
+
+7. Why InkNow Exists (Problem → Solution Section)
+Explain the real pain points:
+
+Clients can’t find the right artist
+
+Artists waste time with unserious clients
+
+No central marketplace for tattoo culture
+
+Messaging is scattered across Instagram, texts, and DMs
+
+No deposit system → high no‑show rates
+
+Then show how InkNow solves each one.
+
+8. Footer
+Keep the existing:
+
+Terms
+
+Privacy
+
+Contact
+
+Add:
+
+Social links (Instagram, TikTok placeholder)
+
+Copyright
+
+App Store / Google Play buttons (placeholder for now)
+
+Technical Requirements
+Fully responsive
+
+Smooth animations (fade‑ins, parallax optional)
+
+Use your best judgment for layout and spacing
+
+Keep everything clean, premium, and intentional
+
+No waitlist forms — this is a product explanation site
