@@ -29,6 +29,14 @@ const faqs = {
   ],
   artists: [
     {
+      q: "How does the consultation process work?",
+      a: "All bookings start with a client consultation request — you'll be notified in-app to review and accept or decline. Once accepted, the client signs a consent form and pays a deposit to lock in the appointment.",
+    },
+    {
+      q: "Do you support travel bookings?",
+      a: "Yes. Artists can mark themselves as available for travel or guest spots in their profile settings. Clients browsing outside your home city can still find and book you when travel availability is enabled.",
+    },
+    {
       q: "How do I set up payouts?",
       a: "Go to your Profile, tap Payout Method, and connect your Stripe account. You'll need to complete Stripe's identity verification before you can receive payouts.",
     },
@@ -50,7 +58,7 @@ const faqs = {
     },
     {
       q: "How does the Top 50 Leaderboard work?",
-      a: "Rankings are calculated weekly based on bookings, reviews, portfolio engagement, and app activity in your metro city. The more active and highly reviewed you are, the higher your rank.",
+      a: "Rankings are calculated weekly based on bookings, reviews, portfolio engagement, and app activity in your city. The more active and highly reviewed you are, the higher your rank.",
     },
   ],
   technical: [
@@ -60,7 +68,7 @@ const faqs = {
     },
     {
       q: "How do I delete my account?",
-      a: "Go to Profile → Settings → Delete Account. This permanently removes your data. Booking records may be retained for legal purposes as outlined in our Privacy Policy.",
+      a: "Go to Profile → Privacy & Security → Delete Account. This permanently removes your data. Booking records may be retained for legal purposes as outlined in our Privacy Policy.",
     },
     {
       q: "The app is crashing or showing an error.",

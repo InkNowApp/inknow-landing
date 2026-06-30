@@ -302,7 +302,7 @@ function Footer() {
         <div className="flex items-center gap-5 text-white/30 text-sm">
           <a href={`${BASE}privacy`} className="hover:text-white/60 transition-colors">Privacy</a>
           <a href={`${BASE}terms`} className="hover:text-white/60 transition-colors">Terms</a>
-          <a href={`${BASE}contact`} className="hover:text-white/60 transition-colors">Contact</a>
+          <a href={`${BASE}contact`} className="hover:text-white/60 transition-colors">Support</a>
         </div>
       </div>
     </footer>
