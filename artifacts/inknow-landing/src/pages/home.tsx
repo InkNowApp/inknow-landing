@@ -330,7 +330,7 @@ export default function Home() {
       <section id="features" className="py-28 px-6 bg-[#0a0a0a]">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
           <div className="flex justify-center items-end gap-5 py-8">
-            <Phone src={`${BASE}assets/screen-consult.jpg`} alt="Request consultation" className="mb-10 opacity-75" />
+            <Phone src={`${BASE}assets/screen-consult.jpg`} alt="Request consultation" className="hidden md:block mb-10 opacity-75" />
             <Phone src={`${BASE}assets/screen-deposit.jpg`} alt="Pay deposit" />
           </div>
           <div className="flex flex-col gap-8">
@@ -386,7 +386,7 @@ export default function Home() {
           </div>
           <div className="flex justify-center items-end gap-5 py-8">
             <Phone src={`${BASE}assets/screen-artist-dash.jpg`} alt="Artist dashboard" />
-            <Phone src={`${BASE}assets/screen-availability.jpg`} alt="Availability calendar" className="mb-10 opacity-75" />
+            <Phone src={`${BASE}assets/screen-availability.jpg`} alt="Availability calendar" className="hidden md:block mb-10 opacity-75" />
           </div>
         </div>
       </section>
