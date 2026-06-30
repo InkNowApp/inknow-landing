@@ -134,20 +134,14 @@ export default function Contact() {
       </div>
 
       <footer className="border-t border-white/6 py-10 px-6">
-        <div className="max-w-5xl mx-auto flex flex-col items-center gap-4">
-          <div className="flex items-center gap-5 text-sm" style={{ color: "#888888" }}>
+        <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+          <a href={BASE}>
+            <img src={`${BASE}assets/logo.png`} alt="InkNow" className="h-14 w-auto object-contain mix-blend-screen brightness-200" />
+          </a>
+          <p className="text-white/25 text-sm">© 2026 InkNow LLC. All rights reserved.</p>
+          <div className="flex items-center gap-5 text-white/30 text-sm">
             <a href={`${BASE}privacy`} className="hover:text-white/60 transition-colors">Privacy Policy</a>
-            <span className="text-white/20">·</span>
             <a href={`${BASE}terms`} className="hover:text-white/60 transition-colors">Terms of Service</a>
-          </div>
-          <div className="flex flex-col md:flex-row items-center justify-between w-full gap-4">
-            <img src={`${BASE}assets/logo.png`} alt="InkNow" className="h-8 w-auto object-contain mix-blend-screen brightness-200" />
-            <p className="text-white/25 text-sm">© 2026 InkNow LLC. All rights reserved.</p>
-            <div className="flex items-center gap-5 text-white/30 text-sm">
-              <a href={`${BASE}privacy`} className="hover:text-white/60 transition-colors">Privacy</a>
-              <a href={`${BASE}terms`} className="hover:text-white/60 transition-colors">Terms</a>
-              <a href={`${BASE}contact`} className="hover:text-white/60 transition-colors">Contact</a>
-            </div>
           </div>
         </div>
       </footer>
