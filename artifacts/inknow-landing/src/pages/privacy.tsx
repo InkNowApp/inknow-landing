@@ -27,11 +27,10 @@ export default function Privacy() {
           <Subsection title="a) Account Information">
             <ul className="space-y-2">
               {[
-                "Name, email address, phone number (optional)",
+                "Name and email address",
                 "Profile photo (optional)",
                 "Role: Client, Artist, or Shop Owner",
                 "ZIP code and state (used to assign your metro city)",
-                "Date of birth (to verify you are 18 or older)",
               ].map((item) => <BulletItem key={item} text={item} />)}
             </ul>
           </Subsection>
@@ -73,10 +72,11 @@ export default function Privacy() {
                 "App interactions, screen views, portfolio engagement (likes, views, shares, bookmarks)",
                 "Push notification tokens",
                 "Device type, operating system version, and app version",
-                "Crash reports and performance diagnostics via Firebase Crashlytics",
-                "Aggregate usage analytics via Firebase Analytics (no personally identifiable information is sent to Firebase without your consent)",
               ].map((item) => <BulletItem key={item} text={item} />)}
             </ul>
+            <p className="text-white/70 leading-relaxed mt-3">
+              Push notifications are delivered using Firebase Cloud Messaging (FCM). We transmit your device push token to FCM to deliver notifications. No personally identifiable information is sent to Firebase beyond what is required to route the notification to your device.
+            </p>
           </Subsection>
 
           <Subsection title="g) Location Data">
@@ -162,7 +162,7 @@ export default function Privacy() {
             {[
               "Access: Request a copy of the personal data we hold about you",
               "Correction: Update or correct inaccurate information in your profile",
-              "Deletion: Request deletion of your account and associated data (subject to legal retention requirements)",
+              "Deletion: Delete your account directly in the app via Settings → Privacy & Security, or request deletion by emailing us (subject to legal retention requirements)",
               "Portability: Request your data in a structured, machine-readable format",
               "Opt-out of marketing: Unsubscribe from promotional emails at any time",
               "Push notifications: Disable in your device settings at any time",
