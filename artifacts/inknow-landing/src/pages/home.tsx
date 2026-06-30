@@ -285,10 +285,10 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="relative flex justify-center items-center h-[520px] z-10">
-            <Phone src={`${BASE}assets/screen-profile.jpg`} alt="Artist profile" className="absolute left-0 top-8 opacity-60 scale-90" />
+          <div className="relative flex justify-center items-center h-[520px] z-10 overflow-hidden">
+            <Phone src={`${BASE}assets/screen-profile.jpg`} alt="Artist profile" className="absolute left-0 top-8 opacity-60 scale-90 hidden md:block" />
             <Phone src={`${BASE}assets/screen-discover.jpg`} alt="Discover artists" className="relative z-10 shadow-2xl" />
-            <Phone src={`${BASE}assets/screen-explore.jpg`} alt="Explore styles" className="absolute right-0 top-8 opacity-60 scale-90" />
+            <Phone src={`${BASE}assets/screen-explore.jpg`} alt="Explore styles" className="absolute right-0 top-8 opacity-60 scale-90 hidden md:block" />
           </div>
         </div>
       </section>
