@@ -165,7 +165,7 @@ function ArtistCard({
   return (
     <div className="rounded-2xl border border-white/8 bg-[#111] overflow-hidden hover:border-white/16 transition-all duration-300">
       <div className={`h-36 ${accent} flex items-end px-5 pb-4`}>
-        <div className="w-16 h-16 rounded-2xl overflow-hidden border-2 border-white/20 shadow-lg">
+        <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-white/20 shadow-lg">
           {avatar ? (
             <img src={avatar} alt={name} className="w-full h-full object-cover object-top" />
           ) : (
