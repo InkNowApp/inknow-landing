@@ -157,16 +157,22 @@ function TrustPillar({ icon, title, desc }: { icon: ReactNode; title: string; de
 }
 
 function ArtistCard({
-  name, location, styles, rating, reviews, price, verified, initials, accent
+  name, location, styles, rating, reviews, price, verified, initials, accent, avatar
 }: {
   name: string; location: string; styles: string[]; rating: number; reviews: number;
-  price: string; verified?: boolean; initials: string; accent: string;
+  price: string; verified?: boolean; initials: string; accent: string; avatar?: string;
 }) {
   return (
     <div className="rounded-2xl border border-white/8 bg-[#111] overflow-hidden hover:border-white/16 transition-all duration-300">
       <div className={`h-36 ${accent} flex items-end px-5 pb-4`}>
-        <div className="w-14 h-14 rounded-2xl bg-black/40 backdrop-blur-sm border border-white/10 flex items-center justify-center">
-          <span className="text-white font-black text-lg tracking-tight">{initials}</span>
+        <div className="w-16 h-16 rounded-2xl overflow-hidden border-2 border-white/20 shadow-lg">
+          {avatar ? (
+            <img src={avatar} alt={name} className="w-full h-full object-cover object-top" />
+          ) : (
+            <div className="w-full h-full bg-black/40 backdrop-blur-sm flex items-center justify-center">
+              <span className="text-white font-black text-lg tracking-tight">{initials}</span>
+            </div>
+          )}
         </div>
       </div>
       <div className="p-5">
@@ -400,9 +406,9 @@ export default function Home() {
             <p className="text-white/40 text-lg mt-4 max-w-sm mx-auto">Verified portfolios. Real ratings. Every style, every city.</p>
           </div>
           <div className="grid md:grid-cols-3 gap-5">
-            <ArtistCard name="TatsByTut" location="Ink District · Warren, OH" styles={["Realism", "Blackwork", "Piercing"]} rating={4.8} reviews={32} price="Contact for pricing" verified initials="TT" accent="bg-gradient-to-br from-zinc-800 to-zinc-900" />
-            <ArtistCard name="InkByJay" location="Independent · Atlanta, GA" styles={["Fine Line", "Geometric", "Minimalist"]} rating={5.0} reviews={12} price="$120/hr" verified initials="IJ" accent="bg-gradient-to-br from-stone-800 to-zinc-900" />
-            <ArtistCard name="TatGurl" location="Studio 7 · Austin, TX" styles={["Traditional", "Watercolor", "Piercing"]} rating={5.0} reviews={8} price="$95/hr" verified initials="TG" accent="bg-gradient-to-br from-neutral-800 to-zinc-900" />
+            <ArtistCard name="TatsByTut" location="Ink District · Warren, OH" styles={["Realism", "Blackwork", "Piercing"]} rating={4.8} reviews={32} price="Contact for pricing" verified initials="TT" accent="bg-gradient-to-br from-zinc-800 to-zinc-900" avatar={`${BASE}assets/avatar-tatsbyut.jpg`} />
+            <ArtistCard name="InkByJay" location="Independent · Atlanta, GA" styles={["Fine Line", "Geometric", "Minimalist"]} rating={5.0} reviews={12} price="$120/hr" verified initials="IJ" accent="bg-gradient-to-br from-stone-800 to-zinc-900" avatar={`${BASE}assets/avatar-inkbyjay.jpg`} />
+            <ArtistCard name="TatGurl" location="Studio 7 · Austin, TX" styles={["Traditional", "Watercolor", "Piercing"]} rating={5.0} reviews={8} price="$95/hr" verified initials="TG" accent="bg-gradient-to-br from-neutral-800 to-zinc-900" avatar={`${BASE}assets/avatar-tatgurl.jpg`} />
           </div>
           <div className="text-center mt-10">
             <a href="https://apps.apple.com" className="inline-flex items-center gap-2 text-white/40 hover:text-white/70 text-sm transition-colors">
