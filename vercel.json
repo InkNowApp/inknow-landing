@@ -1,0 +1,15 @@
+{
+  "buildCommand": "pnpm --filter inknow-landing run build",
+  "outputDirectory": "artifacts/inknow-landing/dist",
+  "installCommand": "pnpm install",
+  "rewrites": [
+    { "source": "/((?!join/).*)", "destination": "/index.html" }
+  ],
+  "redirects": [
+    {
+      "source": "/join/:code",
+      "destination": "https://inknow-production.up.railway.app/join/:code",
+      "permanent": false
+    }
+  ]
+}
