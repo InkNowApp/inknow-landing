@@ -1,9 +1,9 @@
 {
-  "buildCommand": "npm install && npm run build",
-  "outputDirectory": "dist",
-  "framework": "vite",
+  "buildCommand": "pnpm --filter inknow-landing run build",
+  "outputDirectory": "artifacts/inknow-landing/dist",
+  "installCommand": "pnpm install",
   "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
+    { "source": "/((?!join/).*)", "destination": "/index.html" }
   ],
   "redirects": [
     {
