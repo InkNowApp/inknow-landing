@@ -497,7 +497,7 @@ export default function Home() {
               <img src={`${BASE}assets/badge-appstore.png`} alt="Download on the App Store" className="h-14 w-auto" />
             </a>
             <a href="https://play.google.com/store/apps/details?id=com.inknow" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity hover:-translate-y-0.5 transform duration-200">
-              <img src={`${BASE}assets/badge-googleplay.png`} alt="Get it on Google Play" className="h-14 w-auto" />
+              <img src={`${BASE}assets/badge-googleplay.png`} alt="Get it on Google Play" className="h-16 w-auto" />
             </a>
           </div>
           <p className="text-white/20 text-xs mt-6">Free on iOS & Android</p>
