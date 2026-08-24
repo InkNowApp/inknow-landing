@@ -6,3 +6,17 @@ id = "G1Jt2K8XFWmDe_ryJSN-j"
 uri = "file://artifacts/inknow-landing/public/favicon.png"
 type = "image"
 title = "InkNow App Icon"
+
+[[outputs]]
+id = "hvLLE4IQ8_xc8vjAgC9PI"
+uri = "file://artifacts/inknow-landing/public/assets/inknow-download-qr.png"
+type = "image"
+title = "InkNow Convention QR Code (PNG)"
+description = "High-resolution 2624×2624 black-on-white QR code for print banners. Encodes https://getinknow.com/download."
+
+[[outputs]]
+id = "QEOZ5fzzo6myCQJy2mbaW"
+uri = "file://artifacts/inknow-landing/public/assets/inknow-download-qr.svg"
+type = "image"
+title = "InkNow Convention QR Code (SVG)"
+description = "Scalable black-on-white QR code for print and banner artwork. Encodes https://getinknow.com/download."
