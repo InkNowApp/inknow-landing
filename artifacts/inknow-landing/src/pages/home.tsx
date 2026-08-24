@@ -228,7 +228,7 @@ export default function Home() {
             Artist Sign-Up
           </a>
           <div className="flex items-center gap-2">
-            <a href="https://apps.apple.com" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
+            <a href="https://apps.apple.com/us/app/inknow-book-tattoos-artists/id6766939801" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
               <img src={`${BASE}assets/badge-appstore.png`} alt="Download on the App Store" className="h-10 w-auto" />
             </a>
             <a href="https://play.google.com/store/apps/details?id=com.inknow" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
@@ -262,7 +262,7 @@ export default function Home() {
               Discover artists, explore real portfolios, and book confidently — consultations, deposits, and payments all in one place.
             </p>
             <div className="flex flex-wrap gap-3 mt-2">
-              <a href="https://apps.apple.com" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity hover:-translate-y-0.5 transform duration-200">
+              <a href="https://apps.apple.com/us/app/inknow-book-tattoos-artists/id6766939801" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity hover:-translate-y-0.5 transform duration-200">
                 <img src={`${BASE}assets/badge-appstore.png`} alt="Download on the App Store" className="h-14 w-auto" />
               </a>
               <a href="https://play.google.com/store/apps/details?id=com.inknow" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity hover:-translate-y-0.5 transform duration-200">
@@ -347,7 +347,7 @@ export default function Home() {
               <TrustPillar icon={Icons.star} title="Rate & Follow" desc="Leave honest reviews and follow your favorite artists to stay up to date on availability." />
             </div>
             <a
-              href="https://apps.apple.com"
+              href="https://apps.apple.com/us/app/inknow-book-tattoos-artists/id6766939801"
               className="inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl bg-yellow-500 hover:bg-yellow-400 text-black font-bold text-sm transition-all w-fit shadow-lg shadow-yellow-500/20"
             >
               <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
@@ -379,7 +379,7 @@ export default function Home() {
                 <span className="px-2 py-0.5 rounded-full bg-yellow-500/20 text-yellow-400 text-xs font-medium">30-day free trial</span>
               </div>
               <p className="text-white/50 text-sm leading-relaxed">Portfolio watermarking, PRO analytics dashboard, priority ranking boost, and monthly boost credits.</p>
-              <a href="https://apps.apple.com" className="text-yellow-400 text-sm font-semibold hover:text-yellow-300 transition-colors">
+              <a href="https://apps.apple.com/us/app/inknow-book-tattoos-artists/id6766939801" className="text-yellow-400 text-sm font-semibold hover:text-yellow-300 transition-colors">
                 Start free trial →
               </a>
             </div>
@@ -405,7 +405,7 @@ export default function Home() {
             <ArtistCard name="TatGurl" location="Studio 7 · Austin, TX" styles={["Traditional", "Watercolor", "Piercing"]} rating={5.0} reviews={8} price="$95/hr" verified initials="TG" accent="bg-gradient-to-br from-neutral-800 to-zinc-900" avatar={`${BASE}assets/avatar-tatgurl.jpg`} />
           </div>
           <div className="text-center mt-10">
-            <a href="https://apps.apple.com" className="inline-flex items-center gap-2 text-white/40 hover:text-white/70 text-sm transition-colors">
+            <a href="https://apps.apple.com/us/app/inknow-book-tattoos-artists/id6766939801" className="inline-flex items-center gap-2 text-white/40 hover:text-white/70 text-sm transition-colors">
               Browse all artists in the app
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5l7 7-7 7" /></svg>
             </a>
@@ -493,7 +493,7 @@ export default function Home() {
             Transparency, trust, and simplicity — for everyone in the tattoo and piercing world.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
-            <a href="https://apps.apple.com" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity hover:-translate-y-0.5 transform duration-200">
+            <a href="https://apps.apple.com/us/app/inknow-book-tattoos-artists/id6766939801" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity hover:-translate-y-0.5 transform duration-200">
               <img src={`${BASE}assets/badge-appstore.png`} alt="Download on the App Store" className="h-14 w-auto" />
             </a>
             <a href="https://play.google.com/store/apps/details?id=com.inknow" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity hover:-translate-y-0.5 transform duration-200">
