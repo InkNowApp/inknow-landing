@@ -8,6 +8,8 @@ import Privacy from "@/pages/privacy";
 import Terms from "@/pages/terms";
 import Contact from "@/pages/contact";
 import DeleteAccount from "@/pages/delete-account";
+import Download from "@/pages/download";
+import JoinRedirect from "@/pages/join-redirect";
 
 const queryClient = new QueryClient();
 
@@ -19,6 +21,8 @@ function Router() {
       <Route path="/terms" component={Terms} />
       <Route path="/contact" component={Contact} />
       <Route path="/delete-account" component={DeleteAccount} />
+      <Route path="/download" component={Download} />
+      <Route path="/join/:code" component={JoinRedirect} />
       <Route component={NotFound} />
     </Switch>
   );
